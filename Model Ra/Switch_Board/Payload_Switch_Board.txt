@@ -1,0 +1,167 @@
+Board Information Report
+Filename     : H:\SOAR\Payload_Switch_Board\Payload_Switch_Board.PcbDoc
+Date         : 2021-10-11
+Time         : 4:53:20 PM
+Time Elapsed : 00:00:00
+
+General
+    Board Size, 63.881mmx18.288mm
+    Components on board, 6
+count : 2
+
+Routing Information
+    Routing completion, 100.00%
+    Connections, 9
+    Connections routed, 9
+    Connections remaining, 0
+count : 4
+
+Layer, Arcs, Pads, Vias, Tracks, Texts, Fills, Regions, ComponentBodies
+    Top Layer, 0, 8, 0, 20, 0, 0, 0, 0
+    Bottom Layer, 0, 0, 0, 10, 0, 0, 0, 0
+    Mechanical 1, 0, 0, 0, 0, 0, 0, 0, 0
+    Top Assembly, 0, 0, 0, 8, 2, 0, 0, 0
+    Top 3D Body, 0, 0, 0, 16, 0, 0, 0, 5
+    Top Courtyard, 0, 0, 0, 18, 0, 0, 0, 0
+    Top Component Center, 0, 0, 0, 4, 0, 0, 0, 0
+    Bottom Assembly, 0, 0, 0, 0, 0, 0, 0, 0
+    Bottom Courtyard, 0, 0, 0, 4, 0, 0, 0, 0
+    Bottom 3D Body, 0, 0, 0, 9, 0, 0, 0, 0
+    Bottom Component Center, 0, 0, 0, 0, 0, 0, 0, 0
+    Multi-Layer, 0, 14, 0, 0, 0, 0, 1, 0
+    Top Paste, 0, 0, 0, 0, 0, 0, 0, 0
+    Top Overlay, 2, 0, 0, 22, 10, 0, 0, 0
+    Top Solder, 6, 0, 0, 0, 0, 0, 1, 0
+    Bottom Solder, 0, 0, 0, 0, 0, 0, 0, 0
+    Bottom Overlay, 0, 0, 0, 10, 2, 0, 0, 0
+    Bottom Paste, 0, 0, 0, 0, 0, 0, 0, 0
+    Drill Guide, 0, 0, 0, 0, 0, 0, 0, 0
+    Keep-Out Layer, 0, 0, 0, 0, 0, 0, 0, 0
+    Drill Drawing, 0, 0, 0, 0, 0, 0, 0, 0
+count : 21
+
+Drill Pairs, Vias
+count : 0
+
+Layer, Sq.In., Sq.MM., Percent of layer
+    Top Layer, 0.076, 48.924, 4%
+    Bottom Layer, 0.057, 36.551, 3%
+count : 2
+
+Non-Plated Hole Size, Pads, Vias
+    1.02mm, 1, 0
+count : 1
+
+Plated Hole Size, Pads, Vias
+    0mm, 8, 0
+    1.02mm, 6, 0
+    1.8796mm, 5, 0
+    2.997mm, 2, 0
+count : 4
+
+Non-Plated Slot Size / Length, Pads
+count : 0
+
+Plated Slot Size / Length, Pads
+count : 0
+
+Non-Plated Square Hole Size, Pads
+count : 0
+
+Plated Square Hole Size, Pads
+count : 0
+
+Top Layer Annular Ring Size, Count
+    -1.477mm, 1
+    -1.473mm, 1
+    0mm, 1
+    0.5mm, 6
+    0.9398mm, 5
+count : 5
+
+Mid Layer Annular Ring Size, Count
+    -1.477mm, 1
+    -1.473mm, 1
+    0mm, 1
+    0.5mm, 6
+    0.9398mm, 5
+count : 5
+
+Bottom Layer Annular Ring Size, Count
+    -1.477mm, 1
+    -1.473mm, 1
+    0mm, 1
+    0.5mm, 6
+    0.9398mm, 5
+count : 5
+
+Pad Solder Mask, Count
+    0mm, 4
+    0.0762mm, 8
+    0.1016mm, 10
+count : 3
+
+Pad Paste Mask, Count
+    0mm, 22
+count : 1
+
+Pad Pwr/Gnd Expansion, Count
+    0.508mm, 22
+count : 1
+
+Pad Relief Conductor Width, Count
+    0.254mm, 22
+count : 1
+
+Pad Relief Air Gap, Count
+    0.254mm, 22
+count : 1
+
+Pad Relief Entries, Count
+    4, 22
+count : 1
+
+Via Solder Mask, Count
+count : 0
+
+Track Width, Count
+    0.05mm, 12
+    0.1mm, 10
+    0.127mm, 39
+    0.2mm, 30
+    0.254mm, 30
+count : 5
+
+Arc Line Width, Count
+    0.25mm, 2
+    0.5862mm, 1
+    0.8362mm, 5
+count : 3
+
+Arc Radius, Count
+    0.125mm, 2
+    0.2931mm, 1
+    0.4181mm, 5
+count : 3
+
+Arc Degrees, Count
+    360, 8
+count : 1
+
+Text Height, Count
+    1mm, 2
+    1.524mm, 12
+count : 2
+
+Text Width, Count
+    0.1mm, 2
+    0.254mm, 12
+count : 2
+
+Net Track Width, Count
+    0.254mm, 7
+count : 1
+
+Net Via Size, Count
+    1.27mm, 7
+count : 1

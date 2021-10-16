@@ -1,0 +1,6 @@
+DRC Rules Export File for PCB: C:\Users\andju\OneDrive\Desktop\SOAR PCB OLD\Main_Board\Main Board\2019-2020-MainBoardPCB-master\2019-2020-MainBoardPCB-master\MainBoard_PCB2.PcbDoc
+RuleKind=MinimumAnnularRing|RuleName=MinimumAnnularRing|Scope=Board|Minimum=10.00
+RuleKind=SolderMaskExpansion|RuleName=SolderMaskExpansion|Scope=Board|Minimum=0.10
+RuleKind=Width|RuleName=Width|Scope=Board|Minimum=6.00
+RuleKind=Clearance|RuleName=Clearance|Scope=Board|Minimum=6.00
+RuleKind=ShortCircuit|RuleName=ShortCircuit|Scope=Board|Allowed=0

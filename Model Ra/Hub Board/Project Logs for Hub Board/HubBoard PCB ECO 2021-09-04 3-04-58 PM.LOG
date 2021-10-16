@@ -1,0 +1,113 @@
+Change Component Footprint: Designator=J4 Old Footprint=0436500201 New Footprint=0436500203
+Change Component Footprint: Designator=J5 Old Footprint=0436500201 New Footprint=0436500203
+Change Component Footprint: Designator=J6 Old Footprint=0436500201 New Footprint=0436500203
+Change Component Footprint: Designator=J7 Old Footprint=0436500201 New Footprint=0436500203
+Change Component Footprint: Designator=J8 Old Footprint=0436500201 New Footprint=0436500203
+Change Component Footprint: Designator=J9 Old Footprint=0436500201 New Footprint=0436500203
+Change Component Footprint: Designator=J10 Old Footprint=0436500201 New Footprint=0436500203
+Change Component Footprint: Designator=J11 Old Footprint=0436500201 New Footprint=0436500203
+Change Component Comment : Designator=J4 Old Comment=0436500201 New Comment=0436500203
+Change Component Comment : Designator=J5 Old Comment=0436500201 New Comment=0436500203
+Change Component Comment : Designator=J6 Old Comment=0436500201 New Comment=0436500203
+Change Component Comment : Designator=J7 Old Comment=0436500201 New Comment=0436500203
+Change Component Comment : Designator=J8 Old Comment=0436500201 New Comment=0436500203
+Change Component Comment : Designator=J9 Old Comment=0436500201 New Comment=0436500203
+Change Component Comment : Designator=J10 Old Comment=0436500201 New Comment=0436500203
+Change Component Comment : Designator=J11 Old Comment=0436500201 New Comment=0436500203
+Change component parameters: Designator = "J4" ("J4"); Footprint = "0436500201"; UniqueID = "\FEAQGTJK" ("\FEAQGTJK")
+Change component parameters (AddParameter): Name = "Arrow Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Arrow Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Datasheet Link"; Value = "https://www.molex.com/pdm_docs/sd/436500203_sd.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Height"; Value = "5.82mm"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer_Name"; Value = "Molex"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer_Part_Number"; Value = "0436500203"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "J5" ("J5"); Footprint = "0436500201"; UniqueID = "\DMVOFAGM" ("\DMVOFAGM")
+Change component parameters (AddParameter): Name = "Arrow Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Arrow Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Datasheet Link"; Value = "https://www.molex.com/pdm_docs/sd/436500203_sd.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Height"; Value = "5.82mm"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer_Name"; Value = "Molex"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer_Part_Number"; Value = "0436500203"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "J6" ("J6"); Footprint = "0436500201"; UniqueID = "\LHVVSSOI" ("\LHVVSSOI")
+Change component parameters (AddParameter): Name = "Arrow Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Arrow Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Datasheet Link"; Value = "https://www.molex.com/pdm_docs/sd/436500203_sd.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Height"; Value = "5.82mm"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer_Name"; Value = "Molex"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer_Part_Number"; Value = "0436500203"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "J7" ("J7"); Footprint = "0436500201"; UniqueID = "\ACWXVXUY" ("\ACWXVXUY")
+Change component parameters (AddParameter): Name = "Arrow Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Arrow Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Datasheet Link"; Value = "https://www.molex.com/pdm_docs/sd/436500203_sd.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Height"; Value = "5.82mm"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer_Name"; Value = "Molex"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer_Part_Number"; Value = "0436500203"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "J8" ("J8"); Footprint = "0436500201"; UniqueID = "\NQFQVTKE" ("\NQFQVTKE")
+Change component parameters (AddParameter): Name = "Arrow Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Arrow Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Datasheet Link"; Value = "https://www.molex.com/pdm_docs/sd/436500203_sd.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Height"; Value = "5.82mm"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer_Name"; Value = "Molex"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer_Part_Number"; Value = "0436500203"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "J9" ("J9"); Footprint = "0436500201"; UniqueID = "\VQOULHEB" ("\VQOULHEB")
+Change component parameters (AddParameter): Name = "Arrow Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Arrow Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Datasheet Link"; Value = "https://www.molex.com/pdm_docs/sd/436500203_sd.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Height"; Value = "5.82mm"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer_Name"; Value = "Molex"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer_Part_Number"; Value = "0436500203"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "J10" ("J10"); Footprint = "0436500201"; UniqueID = "\USGWJYGC" ("\USGWJYGC")
+Change component parameters (AddParameter): Name = "Arrow Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Arrow Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Datasheet Link"; Value = "https://www.molex.com/pdm_docs/sd/436500203_sd.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Height"; Value = "5.82mm"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer_Name"; Value = "Molex"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer_Part_Number"; Value = "0436500203"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "J11" ("J11"); Footprint = "0436500201"; UniqueID = "\ZCDFHRZW" ("\ZCDFHRZW")
+Change component parameters (AddParameter): Name = "Arrow Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Arrow Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Datasheet Link"; Value = "https://www.molex.com/pdm_docs/sd/436500203_sd.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Height"; Value = "5.82mm"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer_Name"; Value = "Molex"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer_Part_Number"; Value = "0436500203"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetJ1_6 Pin=J4-MH1
+Added Pin To Net: NetName=NetJ1_6 Pin=J4-MH2
+Added Pin To Net: NetName=NetJ1_5 Pin=J5-MH1
+Added Pin To Net: NetName=NetJ1_5 Pin=J5-MH2
+Added Pin To Net: NetName=NetJ1_4 Pin=J6-MH1
+Added Pin To Net: NetName=NetJ1_4 Pin=J6-MH2
+Added Pin To Net: NetName=NetJ2_6 Pin=J7-MH1
+Added Pin To Net: NetName=NetJ2_6 Pin=J7-MH2
+Added Pin To Net: NetName=NetJ2_5 Pin=J8-MH1
+Added Pin To Net: NetName=NetJ2_5 Pin=J8-MH2
+Added Pin To Net: NetName=NetJ2_4 Pin=J9-MH1
+Added Pin To Net: NetName=NetJ2_4 Pin=J9-MH2
+Added Pin To Net: NetName=NetJ3_5 Pin=J10-MH1
+Added Pin To Net: NetName=NetJ3_5 Pin=J10-MH2
+Added Pin To Net: NetName=NetJ3_4 Pin=J11-MH1
+Added Pin To Net: NetName=NetJ3_4 Pin=J11-MH2
+Added Member To Class: ClassName=HubBoard Member=Component J4 0436500203
+Added Member To Class: ClassName=HubBoard Member=Component J5 0436500203
+Added Member To Class: ClassName=HubBoard Member=Component J6 0436500203
+Added Member To Class: ClassName=HubBoard Member=Component J7 0436500203
+Added Member To Class: ClassName=HubBoard Member=Component J8 0436500203
+Added Member To Class: ClassName=HubBoard Member=Component J9 0436500203
+Added Member To Class: ClassName=HubBoard Member=Component J10 0436500203
+Added Member To Class: ClassName=HubBoard Member=Component J11 0436500203
+Added Room: Name=HubBoard

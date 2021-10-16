@@ -1,0 +1,33 @@
+Removed Pin From Net: NetName=NetJ3_2 Pin=J3-2
+Removed Pin From Net: NetName=NetJ1_2 Pin=J9-1
+Removed Pin From Net: NetName=NetJ2_2 Pin=J9-2
+Removed Pin From Net: NetName=NetJ3_2 Pin=J9-3
+Change Component Designator: OldDesignator=J3 NewDesignator=J9
+Change Component Designator: OldDesignator=J9 NewDesignator=J3
+Added Pin To Net: NetName=NetJ3_2 Pin=J3-2
+Added Pin To Net: NetName=NetJ1_2 Pin=J3-4
+Added Pin To Net: NetName=NetJ2_2 Pin=J3-9
+Added Pin To Net: NetName=NetJ3_2 Pin=J7-2
+Change Net Name : Old Net Name=NetJ8_2 New Net Name=NetJ3_6
+Added Pin To Net: NetName=NetJ3_1 Pin=J3-1
+Added Pin To Net: NetName=NetJ3_1 Pin=J9-2
+Added Net: Name=NetJ3_1
+Added Pin To Net: NetName=NetJ3_3 Pin=J3-3
+Added Pin To Net: NetName=NetJ3_3 Pin=J4-2
+Added Net: Name=NetJ3_3
+Added Pin To Net: NetName=NetJ3_7 Pin=J3-7
+Added Pin To Net: NetName=NetJ3_7 Pin=J6-2
+Added Net: Name=NetJ3_7
+Added Pin To Net: NetName=NetJ3_8 Pin=J3-8
+Added Pin To Net: NetName=NetJ3_8 Pin=J5-2
+Added Net: Name=NetJ3_8
+Added Member To Class: ClassName=HubBoard Member=Component J1 0430450200
+Added Member To Class: ClassName=HubBoard Member=Component J2 0430450200
+Added Member To Class: ClassName=HubBoard Member=Component J3 0430451013
+Added Member To Class: ClassName=HubBoard Member=Component J4 0430450200
+Added Member To Class: ClassName=HubBoard Member=Component J5 0430450200
+Added Member To Class: ClassName=HubBoard Member=Component J6 0430450200
+Added Member To Class: ClassName=HubBoard Member=Component J7 0430450200
+Added Member To Class: ClassName=HubBoard Member=Component J8 0430450200
+Added Member To Class: ClassName=HubBoard Member=Component J9 0430450200
+Added Room: Name=HubBoard

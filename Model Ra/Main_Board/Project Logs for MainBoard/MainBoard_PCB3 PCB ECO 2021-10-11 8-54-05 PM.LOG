@@ -1,0 +1,8 @@
+Added Pin To Net: NetName=SCL0 Pin=J2-3
+Added Pin To Net: NetName=SDA0 Pin=J2-4
+Added Pin To Net: NetName=SDA0 Pin=R3-1
+Added Pin To Net: NetName=SCL0 Pin=R15-2
+Added Pin To Net: NetName=SDA0 Pin=U2-7
+Added Pin To Net: NetName=SCL0 Pin=U2-8
+Added Member To Class: ClassName=MainBoard_Sheet1 Member=Component U1 LSM9DS1TR
+Added Room: Name=MainBoard_Sheet1
