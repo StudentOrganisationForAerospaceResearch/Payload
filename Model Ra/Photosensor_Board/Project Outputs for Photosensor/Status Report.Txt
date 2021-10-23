@@ -1,0 +1,12 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [Photosensor.PrjPcb]
+   Generated File[Photo Board Rec.TXT]
+   Generated File[Photo Board Rec.LDP]
+   Generated File[Photo Board Rec.DRR]
+
+
+Files Generated   : 3
+Documents Printed : 0
+
+Finished Output Generation At 11:15:03 AM On 2021-10-23
