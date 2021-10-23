@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------------------------------------------------------------
-NCDrill File Report For: Payload_Switch_Board.PcbDoc   2021-10-23  11:52:21 AM
+NCDrill File Report For: Payload_Switch_Board.PcbDoc   2021-10-23  12:59:57 PM
 ----------------------------------------------------------------------------------------------------------------------------------
 
 Layer Pair : Top Layer to Bottom Layer
@@ -7,7 +7,7 @@ ASCII RoundHoles File : Payload_Switch_Board.TXT
 
 Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
 ----------------------------------------------------------------------------------------------------------------------------------
-T1      42mil (1.07mm)                                            Round             6         PTH        0.59inch (15.00mm)
+T1      42mil (1.07mm)                                            Round             6         PTH        0.71inch (18.00mm)
 T2      74mil (1.88mm)                                            Round             5         PTH        1.08inch (27.36mm)
 T3      118mil (2.997mm)                                          Round             2         PTH        2.35inch (59.56mm)
 T4      42mil (1.07mm)                                            Round             2         NPTH       0.47inch (12.00mm)
