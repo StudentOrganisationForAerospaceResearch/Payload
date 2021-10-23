@@ -1,0 +1,16 @@
+Change Component Footprint: Designator=J1 Old Footprint=MOLEX_2068320601 New Footprint=0430450614
+Change Component Comment : Designator=J1 Old Comment=2068320601 New Comment=0430450614
+Change component parameters: Designator = "J1" ("J1"); Footprint = "MOLEX_2068320601"; UniqueID = "\UFSCGKFJ" ("\UFSCGKFJ")
+Change component parameters (AddParameter): Name = "Arrow Part Number"; Value = "0430450614"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Arrow Price/Stock"; Value = "https://www.arrow.com/en/products/0430450614/molex?region=nac"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Datasheet Link"; Value = "https://www.molex.com/pdm_docs/sd/430450614_sd.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Height"; Value = "10.16mm"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer_Name"; Value = "Molex"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer_Part_Number"; Value = "0430450614"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser Part Number"; Value = "N/A"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/Molex/0430450614?qs=PBcRNPEHKsqC6mUhVPlcHQ%3D%3D"; VariantName = "[No Variations]"
+Added Component: Designator=MH1(MOUNT-HOLE)
+Added Component: Designator=MH2(MOUNT-HOLE)
+Added Member To Class: ClassName=Payload_Switch_Board Member=Component MH1 Mounting Hole
+Added Member To Class: ClassName=Payload_Switch_Board Member=Component MH2 Mounting Hole
+Added Room: Name=Payload_Switch_Board
