@@ -1,0 +1,5 @@
+- Breakouts for charger
+- 4 battery holders & board
+- 1 LDO regulator
+- 1 Key lock switch 
+- Battery Health LEDs (https://circuitdigest.com/electronic-circuits/simple-battery-level-indicator-using-op-amp)
