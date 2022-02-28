@@ -70,16 +70,24 @@ int photo_resistor_pins[] = {A0, A1, A2, A3};
 #define THERMISTORSCOUNT 4
 #define PHOTORESISTORCOUNT 4
 
-#define previous 25 //Set amount of previous data to store 
+#define previous 25 //Set amount of previous data to store... Not used oh well
 
 #define VCC 3.3     //Supply voltage
-#define R 10000     //R=10KΩ
+#define R 10000     //R=10K
+
+//Calibrate Steinhart-Hart Coefficients for Thermistors
+//https://www.vishay.com/thermistors/ntc-rt-calculator/
+float A = -12.89228328;
+float B = 4245.14800000;
+float C = -87493.00000000;
+//float D = -9588114.00000000  
+//Not sure what D is for cannot find an equation using it...
 
 // Earth's magnetic field varies by location. Add or subtract
 // a declination to get a more accurate heading. Calculate
 // http://www.ngdc.noaa.gov/geomag-web/#declination
-#define DECLINATION 13.79° // Declination (degrees) this is at my hosue NE Calgary area 
-
+#define DECLINATION 13.17 // Declination (degrees) for viking
+//13.79 for NE calgary by my house
 double referencePressure;
 
 
@@ -98,8 +106,14 @@ float previous_acc[previous]; //Not sure what axis to focus on
 int num_recorded = 0;
 int state = 0;  //Just will determine how oftern the data is recorded not the rate at which data is aquired
 
-boolean testing = false; //Prints to SD card, then will go back to terminal
+long tick = 0; 
+int rate = 100; //Smaller the rate more data recorded => inverse relationship as modulus is used
+int flag = 0; //1 for once launched
+long started = 0;
+int rail_flag = 0; //1 for when upright on launch rail
 
+boolean testing = false; //Prints to SD card, then will go back to terminal
+//***In launch mode
 
 //Instances that use I2C\\ ------------------------------------------------------------------------------------------------------------------------
 MS5611 ms5611;
@@ -136,12 +150,19 @@ void setup() {
 
   //IMU\\
   Serial.println("Initialize LSM9DS1 Sensor");
+  /*
   if (imu.begin() == false) // with no arguments, this uses default addresses (AG:0x6B, M:0x1E) and i2c port (Wire).
   {
     Serial.println("Failed to communicate with LSM9DS1.");
     while (1);
   }
-  
+  */ 
+  /*
+  while (imu.begin() == false) {
+    Serial.println("Failed to communicate with LSM9DS1.");
+    delay(500);
+  }
+  */
   //IMU connected sequence
   Serial.println("LSM9DS1 connected!");
   wash();
@@ -170,6 +191,8 @@ void setup() {
 
   // Check settings
   checkSettings();
+
+  digitalWrite(LED, HIGH);
 
  //SD card\\
  Serial.println("Initialize SD card");
@@ -211,8 +234,16 @@ void setup() {
 }
 
 void loop() {
-
-  
+  tick += 1;
+  if (tick % rate == 0) {
+    SD_print(data);
+    num_recorded += 1;
+  }
+  delay(10); //100 times per second is max recording rate
+  if (tick > 100){
+    control_data(data);
+    launching(data[6]);
+  }
 }
 
 
@@ -262,7 +293,6 @@ void control_data(float *data) {
   imu_data(data);
   thermo_data(data);
   photo_data(data);
-  SD_print(data);
 }
 
 //Baro\\ ------------------------------------------------------------------------------------------------------------------------
@@ -303,7 +333,7 @@ void imu_data(float *data) {
   xyz_acc(data);
   xyz_mag(data);
   axes(data);
-  latest();
+  //latest();
 }
 
 /*
@@ -315,9 +345,9 @@ void imu_data(float *data) {
 void xyz_dps(float *data) {
   if (imu.gyroAvailable()) {
     imu.readGyro();
-    data[3] = imu.calcGyro(imu.gx, 8);
-    data[4] = imu.calcGyro(imu.gy, 8);
-    data[5] = imu.calcGyro(imu.gz, 8);
+    data[3] = imu.calcGyro(imu.gx);
+    data[4] = imu.calcGyro(imu.gy);
+    data[5] = imu.calcGyro(imu.gz);
   } else {
     data[3] = -1;
     data[4] = -1;
@@ -334,9 +364,9 @@ void xyz_dps(float *data) {
 void xyz_acc(float *data) {
   if (imu.accelAvailable()) {
     imu.readAccel();
-    data[6] = imu.calcAccel(imu.ax, 8);
-    data[7] = imu.calcAccel(imu.ay, 8);
-    data[8] = imu.calcAccel(imu.az, 8);
+    data[6] = imu.calcAccel(imu.ax);
+    data[7] = imu.calcAccel(imu.ay);
+    data[8] = imu.calcAccel(imu.az);
   } else {
     data[6] = -1;
     data[7] = -1;
@@ -353,9 +383,9 @@ void xyz_acc(float *data) {
 void xyz_mag(float *data) {
   if (imu.magAvailable()) {
     imu.readMag();
-    data[9] = imu.calcMag(imu.mx, 8);
-    data[10] = imu.calcMag(imu.my, 8);
-    data[11] = imu.calcMag(imu.mz, 8);
+    data[9] = imu.calcMag(imu.mx);
+    data[10] = imu.calcMag(imu.my);
+    data[11] = imu.calcMag(imu.mz);
   } else {
     data[9] = -1;
     data[10] = -1;
@@ -391,6 +421,8 @@ void axes(float *data) {
   data[14] = heading * PI / 180.0;
 }
 
+//heading -= DECLINATION * PI / 180.0;
+
 
 //Thermo\\ ------------------------------------------------------------------------------------------------------------------------
 
@@ -414,9 +446,22 @@ void thermo_data(float *data) {
 
     data[i + 15] = arrTX[i];
   }
+  
+  float t_temp = 0;
+  float r_temp = 0;
+  for (int i = 0; i < THERMISTORSCOUNT; i++){
+    t_temp = analogRead(thermistor_pins[i]);
+    t_temp *= (3.30 / 1023.00);
+    r_temp = (t_temp / 3.30 * 10000) / (1.0 - t_temp/3.30);
+    t_temp = 1 /(A + B * log(t_temp) + C * pow(log(r_temp), 3));
+    data[i + 15] = t_temp;
+  }
   */
-
   //Need to look up conversion for thermistors that are being used!
+  //Having issues with conversions... Going to have just raw voltages and calibrate later in data analysis!
+  for (int i =0; i < THERMISTORSCOUNT; i++) {
+    data[i + 15] = analogRead(thermistor_pins[i]);
+  }
 }
 
 
@@ -463,4 +508,43 @@ void SD_print(float *data) {
     }
     myFile.close();
   }
+}
+
+//Launching\\ ------------------------------------------------------------------------------------------------------------------------
+/*
+  Pre: Requires acceleration, potentailly acceleration 
+  Post: Sets off global flag to launch state
+  Will take in acceleration in roll axis and once it becomes zero trigger launch 
+  It will initially be 1 g due to gravtiy and once zero it will be expeirencing a launch
+ */
+void launching(float acc_roll_axis) {
+  //Logging rate 
+  //File 
+  //Launch mode 
+
+  //***The issue with how I am testing as I am not simulating breaking gravity in the tests, however the 1g in x axis should still show up in test files 
+
+  Serial.println(acc_roll_axis);
+  //Be careful of direction........
+  if (acc_roll_axis >= 0.85 && rail_flag == 0) {
+    rail_flag = 1;
+    Serial.println("Upright");
+    digitalWrite(LED, HIGH);
+  }
+  
+  if (acc_roll_axis <= 0.5 && flag == 0 && rail_flag == 1) {
+    Serial.println("Launched");
+    flag = 1;
+    rate = 1; //100 times per second 
+    started = num_recorded;
+    digitalWrite(LED, LOW);
+    
+    //file name --> Create new file for launching? nope 
+  }
+
+  if (started != 0 && num_recorded - started >= 30000){
+    rate = 100; //after 30000 lines of rapid recording or should be 300 secs go back to low sample rate... Does not seem to be working as it should be not recording enough data?
+    digitalWrite(LED, HIGH);
+  }
+   
 }
