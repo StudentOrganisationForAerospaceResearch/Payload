@@ -1,0 +1,41 @@
+Removed Pin From Net: NetName=GND Pin=C1-2
+Removed Pin From Net: NetName=VCC Pin=C2-1
+Removed Pin From Net: NetName=GND Pin=C4-1
+Removed Pin From Net: NetName=VCC Pin=C5-1
+Change Component Footprint: Designator=C1 Old Footprint=RAD-0.3 New Footprint=C1206
+Change Component Footprint: Designator=C2 Old Footprint=RAD-0.3 New Footprint=C1206
+Change Component Footprint: Designator=C3 Old Footprint=RAD-0.3 New Footprint=C1206
+Change Component Footprint: Designator=C4 Old Footprint=RAD-0.3 New Footprint=C1206
+Change Component Footprint: Designator=C5 Old Footprint=RAD-0.3 New Footprint=C1206
+Change Component Footprint: Designator=C6 Old Footprint=RAD-0.3 New Footprint=C1206
+Change Component Footprint: Designator=C7 Old Footprint=RAD-0.3 New Footprint=C1206
+Change Component Footprint: Designator=C8 Old Footprint=RAD-0.3 New Footprint=C1206
+Change Component Footprint: Designator=C9 Old Footprint=RAD-0.3 New Footprint=C1206
+Change Component Footprint: Designator=C10 Old Footprint=RAD-0.3 New Footprint=C1206
+Change Component Comment : Designator=C1 Old Comment=Cap New Comment=Cap Semi
+Change Component Comment : Designator=C2 Old Comment=Cap New Comment=Cap Semi
+Change Component Comment : Designator=C3 Old Comment=Cap New Comment=Cap Semi
+Change Component Comment : Designator=C4 Old Comment=Cap New Comment=Cap Semi
+Change Component Comment : Designator=C5 Old Comment=Cap New Comment=Cap Semi
+Change Component Comment : Designator=C6 Old Comment=Cap New Comment=Cap Semi
+Change Component Comment : Designator=C7 Old Comment=Cap New Comment=Cap Semi
+Change Component Comment : Designator=C8 Old Comment=Cap New Comment=Cap Semi
+Change Component Comment : Designator=C9 Old Comment=Cap New Comment=Cap Semi
+Change Component Comment : Designator=C10 Old Comment=Cap New Comment=Cap Semi
+Added Pin To Net: NetName=GND Pin=C1-1
+Added Pin To Net: NetName=VCC Pin=C1-2
+Added Pin To Net: NetName=VCC Pin=C4-1
+Added Pin To Net: NetName=GND Pin=C4-2
+Added Pin To Net: NetName=GND Pin=P4-1
+Added Pin To Net: NetName=VCC Pin=P4-2
+Added Pin To Net: NetName=NetIC1_37 Pin=P4-3
+Added Pin To Net: NetName=NetIC1_29 Pin=P4-4
+Added Pin To Net: NetName=NetIC1_26 Pin=P4-5
+Added Pin To Net: NetName=GND Pin=P4-7
+Added Pin To Net: NetName=NetC2_1 Pin=C2-1
+Added Pin To Net: NetName=NetC2_1 Pin=IC2-10
+Added Net: Name=NetC2_1
+Added Pin To Net: NetName=NetC5_1 Pin=C5-1
+Added Pin To Net: NetName=NetC5_1 Pin=IC2-20
+Added Net: Name=NetC5_1
+Added Room: Name=ModelT_MainBoard
