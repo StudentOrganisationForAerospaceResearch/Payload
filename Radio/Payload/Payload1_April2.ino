@@ -1,5 +1,5 @@
 /*
-   Transmitting template for SOAR payload.
+   Transmitting template for SOAR payload.Adafruit_ISM330DHCX.h
 */
 
 #include <SPI.h>                                               //the lora device is SPI based so load the SPI library                                         
