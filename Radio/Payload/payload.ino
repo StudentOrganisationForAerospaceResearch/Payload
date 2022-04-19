@@ -31,7 +31,7 @@
 // 4. Send values by adding them to the buffer (Using LT.writeFloat or LT.writeUint8)
 
 //libraries\\---------------------------------------------------------------------------------------------------
-#include <SPI.h> //used for radio, GPS, MicroSD and flash
+#include <SPI.h> //used for radio, GPS, MicroSD, GPS and flash
 #include <Wire.h> //used for i2c sensors 
 #include <Adafruit_Sensor.h> //For all Adafruit sensors
 #include <Adafruit_LIS2MDL.h> //libraries needed for Magnetometer (Adafruit ISM330DHCX)
@@ -66,7 +66,7 @@ void setup()
     SPI.begin(); //For VSPI (Used for Radio)
     SPI2.begin(); //FOR HSPI (Used for GPS)
 
-    //Connecting\\---------------------------------------------------------------------------------------------------
+    //Connecting\\-------------------------------------------------------------------------------------------------------------
     pinMode(led_pin, OUTPUT);
     //connecting to IMU
     while (!ism330dhcx.begin_I2C())  { 
