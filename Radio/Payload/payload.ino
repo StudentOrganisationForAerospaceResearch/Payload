@@ -112,7 +112,7 @@ void setup()
     LT.setupLoRa(Frequency, Offset, SpreadingFactor, Bandwidth, CodeRate); //sets up necessary settings for the radio
     flash(500);
     digitalWrite(led_pin, HIGH); //Turns on LED if all connections are working!
-    serial.printIN('All sensors initialized.')
+    Serial.println('All sensors initialized.');
 }
 
 
