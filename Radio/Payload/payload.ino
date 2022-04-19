@@ -68,17 +68,19 @@ void setup()
 
     //Connecting\\---------------------------------------------------------------------------------------------------
     pinMode(led_pin, OUTPUT);
-    while (!ism330dhcx.begin_I2C())  {
+    //connecting to IMU
+    while (!ism330dhcx.begin_I2C())  { 
         Serial.println("Failed to communicate with IMU.");
         flash(50);
     }
     flash(500);
 
+    //connecting to BME 
     while (!bme.begin())  {
         Serial.println("Failed to communicate with Barometer.");
         flash(50);
     }
-    //
+    //BME settings (think so)
     bme.setTemperatureOversampling(BME680_OS_8X);
     bme.setHumidityOversampling(BME680_OS_2X);
     bme.setPressureOversampling(BME680_OS_4X);
@@ -86,12 +88,14 @@ void setup()
     bme.setGasHeater(320, 150); // 320*C for 150 ms
     flash(500);
 
+    //connecting to magnetometer 
     while (!lis2mdl.begin())  {
         Serial.println("Failed to communicate with Magnetometer.");
         flash(50);
     }
     flash(500);
 
+    //connecting to GPS
     while (myGNSS.begin(SPI2, csPin, 5500000) == false)  {
         Serial.println("Failed to communicate with GPS.");
         flash(50);
@@ -100,6 +104,7 @@ void setup()
     myGNSS.saveConfigSelective(VAL_CFG_SUBSEC_IOPORT); //Save (only) the communications port settings to flash and BBR
     flash(500);
 
+    //conneting to radio
     while (!LT.begin(NSS, NRESET, RFBUSY, DIO1, DIO2, DIO3, RX_EN, TX_EN, LORA_DEVICE))  {
         Serial.println("Failed to communicate with Radio.");
         flash(50);
