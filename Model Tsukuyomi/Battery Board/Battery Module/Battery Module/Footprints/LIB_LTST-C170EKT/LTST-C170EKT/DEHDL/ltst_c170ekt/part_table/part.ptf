@@ -1,0 +1,11 @@
+FILE_TYPE = MULTI_PHYS_TABLE;
+
+PART 'LTST_C170EKT'
+CLASS = DISCRETE
+{========================================================================================}
+:"MANUFACTURER_NAME", "MANUFACTURER_PART_NUMBER"= "PART_NUMBER", "JEDEC_TYPE", "PACK_TYPE", "MOUSER_PART_NUMBER", "MOUSER_PRICE/STOCK", "ARROW_PART_NUMBER", "ARROW_PRICE/STOCK", "DESCRIPTION", "DATASHEET", "HEIGHT";
+{========================================================================================}
+ "Lite-On", "LTST-C170EKT" (!) = "", "LEDC2012X120N", "LEDs Chip", "859-LTST-C170EKT", "https://www.mouser.co.uk/ProductDetail/Lite-On/LTST-C170EKT?qs=0hBTvMLoVZ04yIRvO1DUlw%3D%3D", "LTST-C170EKT", "https://www.arrow.com/en/products/ltst-c170ekt/lite-on-technology", "Lite-On LTST-C170EKT, CHIPLED 0805 621 nm Red LED, 2012 (0805) SMD package", "https://media.digikey.com/pdf/Data%20Sheets/Lite-On%20PDFs/LTST-C170EKT.pdf", "1.2 mm"
+END_PART
+
+END.

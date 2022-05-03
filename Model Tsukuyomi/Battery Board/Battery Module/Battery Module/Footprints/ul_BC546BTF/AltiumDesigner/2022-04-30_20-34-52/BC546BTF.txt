@@ -1,0 +1,71 @@
+# Created by Ultra Librarian Gold 8.3.307 Copyright © 1999-2021
+# Frank Frank, Accelerated Designs
+
+StartFootprints
+
+Footprint (Name "TO-92-3L_5P33X5P2_ONS")
+Pad (Name "1") (Location 0, 0) (HoleSize 32) (Surface False) (Rotation 0) (ExpandMask 0)
+PadShape (Size 52, 52) (Shape Rectangular) (Layer Top)
+PadShape (Size 52, 52) (Shape Rectangular) (Layer Bottom)
+PadShape (Size 52, 52) (Shape Rectangular) (Layer MidLayer)
+EndPad
+Pad (Name "2") (Location 102.36219788, 0) (HoleSize 32) (Surface False) (Rotation 0) (ExpandMask 0)
+PadShape (Size 52, 52) (Shape Rounded) (Layer Top)
+PadShape (Size 52, 52) (Shape Rounded) (Layer Bottom)
+PadShape (Size 52, 52) (Shape Rounded) (Layer MidLayer)
+EndPad
+Pad (Name "3") (Location 204.72439575, 0) (HoleSize 32) (Surface False) (Rotation 0) (ExpandMask 0)
+PadShape (Size 52, 52) (Shape Rounded) (Layer Top)
+PadShape (Size 52, 52) (Shape Rounded) (Layer Bottom)
+PadShape (Size 52, 52) (Shape Rounded) (Layer MidLayer)
+EndPad
+Line (Width 6) (Start -36, -72.5) (End -36, 138.36219788) (Layer Mechanical15) 
+Line (Width 6) (Start -36, 138.36219788) (End 240.72439575, 138.36219788) (Layer Mechanical15) 
+Line (Width 6) (Start 240.72439575, 138.36219788) (End 240.72439575, -72.5) (Layer Mechanical15) 
+Line (Width 6) (Start 240.72439575, -72.5) (End -36, -72.5) (Layer Mechanical15) 
+Polygon (PointCount 4) (Layer Mechanical15) 
+Point (-36, -72.5)
+Point (-36, 138.36219788)
+Point (240.72439575, 138.36219788)
+Point (240.72439575, -72.5)
+EndPolygon
+Polygon (PointCount 4) (Layer Mechanical5) 
+Point (355.72439575, 253.36219788)
+Point (355.72439575, -187.5)
+Point (-151, -187.5)
+Point (-151, 253.36219788)
+EndPolygon
+Line (Width 6) (Start 21.12181091, -67.5) (End 183.60258484, -67.5) (Layer TopOverlay) 
+Arc (Width 6) (Radius 107.5) (Location 102.36219788, 0) (StartAngle 201.3289032) (EndAngle 217.57188225) (Layer TopOverlay) 
+Arc (Width 6) (Radius 5) (Location -75.13780212, 0) (StartAngle 0) (EndAngle 360) (Layer TopOverlay) 
+Arc (Width 6) (Radius 107.5) (Location 102.36219788, 0) (StartAngle 322.42810059) (EndAngle 338.70658112) (Layer TopOverlay) 
+Arc (Width 6) (Radius 107.5) (Location 102.36219788, 0) (StartAngle 21.29342079) (EndAngle 158.6711216) (Layer TopOverlay) 
+Line (Width 6) (Start -10, 0) (End 10, 0) (Layer Mechanical13) 
+Line (Width 6) (Start 0, -10) (End 0, 10) (Layer Mechanical13) 
+Line (Width 1) (Start 21.12181091, -62.5) (End 183.60258484, -62.5) (Layer Mechanical13) 
+Arc (Width 0) (Radius 5) (Location 9.86219788, 0) (StartAngle 0) (EndAngle 360) (Layer Mechanical13) 
+Arc (Width 0) (Radius 102.5) (Location 102.36219788, 0) (StartAngle -37.5718689) (EndAngle 217.57183838) (Layer Mechanical13) 
+Step (Name TO-92-3L_5P33X5P2_ONS.step)
+EndFootprint
+EndFootprints
+
+StartComponents
+
+Component (Name "BC546BTF") (PartCount 1) (DesPrefix "U?")
+Pin (Location 300, 0) (Rotation 180) (PinType Passive) (Length 300) (Width 0) (Designator Visible "1") (Name Visible "COLLECTOR") (PinSwap 0) (PartSwap 0) (PinSeq 1) (Part 1)
+Pin (Location 1900, -100) (Rotation 0) (PinType Passive) (Length 300) (Width 0) (Designator Visible "2") (Name Visible "BASE") (PinSwap 0) (PartSwap 0) (PinSeq 2) (Part 1)
+Pin (Location 1900, 0) (Rotation 0) (PinType Passive) (Length 300) (Width 0) (Designator Visible "3") (Name Visible "EMITTER") (PinSwap 0) (PartSwap 0) (PinSeq 3) (Part 1)
+Rectangle (Width 5) (Start 300, -300) (End 1900, 200) (Part 1)
+Parameter (Name "Copyright") (Location 0, 0) (Height 50) (Rotation 0) (Justification Center) (Value "Copyright (C) 2022 Ultra Librarian. All rights reserved.") (Part 1)
+Parameter (Name "Mfr_Name") (Location 0, 0) (Height 50) (Rotation 0) (Justification Center) (Value "onsemi") (Part 1)
+Parameter (Name "Manufacturer_Part_Number") (Location 0, 0) (Height 50) (Rotation 0) (Justification Center) (Value "BC546BTF") (Part 1)
+Parameter (Name "Digi-Key_Part_Number_1") (Location 0, 0) (Height 50) (Rotation 0) (Justification Center) (Value "BC546BTFTR-ND") (Part 1)
+Parameter (Name "Digi-Key_Part_Number_2") (Location 0, 0) (Height 50) (Rotation 0) (Justification Center) (Value "BC546BTFCT-ND") (Part 1)
+Parameter (Name "Digi-Key_Part_Number_3") (Location 0, 0) (Height 50) (Rotation 0) (Justification Center) (Value "2156-BC546BTF-OS-ND") (Part 1)
+Parameter (Name "RefDes") (Location 1100, 400) (Height 82) (Rotation 0) (Justification Center) (Value "RefDes") (Part 1)
+Parameter (Name "Type") (Location 1100, 300) (Height 82) (Rotation 0) (Justification Center) (Value "DEV") (Part 1)
+Description (Value "No Description Available") (Part 1)
+Comment (Value "BC546BTF") (Part 1)
+Footprint (Name "TO-92-3L_5P33X5P2_ONS")
+EndComponent
+EndComponents

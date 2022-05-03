@@ -1,0 +1,68 @@
+(Japanese_coding: sjis)
+(function "ECS_350085"
+    (uver 1)
+    (cuser "SamacSys")
+    (uuser "SamacSys")
+    (ctime 2019-02-11-12:04:51)
+    (utime 2019-04-15-06:39:35)
+    (interface
+        (port "1" (symbPinId 1) (portType INOUT))
+        (port "2" (symbPinId 2) (portType INOUT))
+    )
+    (property "symbolName" "LTST-C170EKT")
+)
+
+
+(pinAssign "ECS_350085"
+    (uver 1)
+    (cuser "SamacSys")
+    (uuser "SamacSys")
+    (ctime 2019-02-11-12:04:51)
+    (utime 2019-04-15-06:39:35)
+    (interface
+        (port "1" (symbPinId 1) (portName "K") (portType INOUT))
+        (port "2" (symbPinId 2) (portName "A") (portType INOUT))
+    )
+    (internal
+        (funcInst (functionRef "ECS_350085")
+                (port "1" (match "1"))
+                (port "2" (match "2"))
+        )
+    )
+    (property "usePowerBox" "No")
+    (property "symbolName" "LTST-C170EKT")
+)
+
+
+(part "LTST-C170EKT"
+    (uver 1)
+    (cuser "SamacSys")
+    (uuser "SamacSys")
+    (ctime 2019-02-11-12:04:51)
+    (utime 2019-04-15-06:39:35)
+    (packageRef "LTST-C170EKT")
+    (pinAssignRef "ECS_350085")
+    (interface
+        (port "1" (symbPinId 1) (portName "K") (portType INOUT))
+        (port "2" (symbPinId 2) (portName "A") (portType INOUT))
+    )
+    (partClass UNDEF)
+    (useInSchema Y)
+    (useInLayout Y)
+    (inPartsList Y)
+    (partType NORMAL)
+    (placeRestriction FREE)
+    (property "enetNonSeries" "YES")
+    (property "refDesPrefix" "LED")
+    (property "description" "Lite-On LTST-C170EKT, CHIPLED 0805 621 nm Red LED, 2012 (0805) SMD package")
+    (property "Manufacturer_Name" "Lite-On")
+    (property "Manufacturer_Part_Number" "LTST-C170EKT")
+    (property "Mouser_Part_Number" "859-LTST-C170EKT")
+    (property "Mouser_Price/Stock" "https://www.mouser.co.uk/ProductDetail/Lite-On/LTST-C170EKT?qs=0hBTvMLoVZ04yIRvO1DUlw%3D%3D")
+    (property "Arrow_Part_Number" "LTST-C170EKT")
+    (property "Arrow_Price/Stock" "https://www.arrow.com/en/products/ltst-c170ekt/lite-on-technology")
+    (property "Datasheet_Link" "https://media.digikey.com/pdf/Data%20Sheets/Lite-On%20PDFs/LTST-C170EKT.pdf")
+    (property "compAreaTopHeight" 1.2)
+)
+
+
