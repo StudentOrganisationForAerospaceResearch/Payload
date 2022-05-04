@@ -32,7 +32,7 @@ ReportSuppressedErrorsInMessages=0
 FSMCodingStyle=eFMSDropDownList_OneProcess
 FSMEncodingStyle=eFMSDropDownList_OneHot
 IsProjectConflictPreventionWarningsEnabled=0
-OutputPath=
+OutputPath=Project Outputs for Main Board
 LogFolderPath=
 ManagedProjectGUID=
 IncludeDesignInRelease=0
@@ -150,40 +150,6 @@ GenerateClassCluster=0
 DocumentUniqueId=MPRJBCLL
 
 [Document7]
-DocumentPath=ul_MS561101BA03-50\AltiumDesigner\2022-05-04_16-41-50\MS561101BA03-50.SchLib
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=RWMZLXUZ
-
-[Document8]
-DocumentPath=ul_MS561101BA03-50\AltiumDesigner\2022-05-04_16-41-50\MS561101BA03-50.PcbLib
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=RMEPCBOU
-
-[Document9]
 DocumentPath=ModelT_MainBoard.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -200,7 +166,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=DOOIUOGR
 
-[Document10]
+[Document8]
 DocumentPath=KSA0M411LFTR.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -217,7 +183,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=XNISGNGO
 
-[Document11]
+[Document9]
 DocumentPath=KSA0M411LFTR.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -234,7 +200,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=LQQHYXCW
 
-[Document12]
+[Document10]
 DocumentPath=Main Board.OutJob
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -251,7 +217,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document13]
+[Document11]
 DocumentPath=Main Board.PcbDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -296,7 +262,7 @@ TemplateFilename=Board Stack Report.XLT
 TemplateStoreRelative=-1
 PCB_PrintColor=0
 SCH_PrintColor=0
-PrintQuality=-4
+PrintQuality=-3
 SCH_ShowNoErc=-1
 SCH_ShowParameter=-1
 SCH_ShowProbes=-1
@@ -315,7 +281,7 @@ SCH_HasExpandLogicalToPhysicalSheets=-1
 SaveSettingsToOutJob=-1
 
 [Generic_EDE]
-OutputDir=
+OutputDir=Project Outputs for Main Board
 
 [OutputGroup1]
 Name=Netlist Outputs
