@@ -48,40 +48,6 @@ PrefsVaultGUID=
 PrefsRevisionGUID=
 
 [Document1]
-DocumentPath=..\..\..\..\..\..\..\OneDrive - University of Calgary\Documents\AltiumLL\SamacSys.PcbLib
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=MPRJBCLL
-
-[Document2]
-DocumentPath=..\..\..\..\..\..\..\OneDrive - University of Calgary\Documents\AltiumLL\SamacSys.SchLib
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=NGLTGAHM
-
-[Document3]
 DocumentPath=Footprints\100SP1T2B4M6QE\100SP1T2B4M6QE\100SP1T2B4M6QE.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -98,7 +64,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=GMIVLSFD
 
-[Document4]
+[Document2]
 DocumentPath=Footprints\100SP1T2B4M6QE\100SP1T2B4M6QE\100SP1T2B4M6QE.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -115,7 +81,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=JVHTISAB
 
-[Document5]
+[Document3]
 DocumentPath=Battery Board.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -132,58 +98,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=FYGRSGWI
 
-[Document6]
-DocumentPath=..\..\..\..\..\..\..\Downloads\ul_LM324DR2G\AltiumDesigner\2022-04-30_20-52-19\LM324DR2G.PcbLib
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=QTJYQKPU
-
-[Document7]
-DocumentPath=..\..\..\..\..\..\..\OneDrive - University of Calgary\Documents\AltiumLL\SamacSysSchLib
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=NGLTGAHM
-
-[Document8]
-DocumentPath=..\..\..\..\..\..\..\Downloads\ul_LM324DR2G\AltiumDesigner\2022-04-30_20-52-19\LM324DR2G.SchLib
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=XERQXIQL
-
-[Document9]
+[Document4]
 DocumentPath=Footprints\ul_BC546BTF\AltiumDesigner\2022-04-30_20-34-52\BC546BTF.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -200,7 +115,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=LJUSEJEQ
 
-[Document10]
+[Document5]
 DocumentPath=Footprints\ul_BC546BTF\AltiumDesigner\2022-04-30_20-34-52\BC546BTF.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1

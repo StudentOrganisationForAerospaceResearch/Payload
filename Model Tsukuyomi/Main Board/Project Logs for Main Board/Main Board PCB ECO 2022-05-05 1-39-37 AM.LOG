@@ -1,0 +1,5 @@
+Added Pin To Net: NetName=NetIC1_36 Pin=P6-3
+Added Pin To Net: NetName=NetIC1_33 Pin=P6-4
+Added Pin To Net: NetName=NetIC1_36 Pin=R1-2
+Added Pin To Net: NetName=NetIC1_33 Pin=R24-2
+Added Room: Name=ModelT_MainBoard
