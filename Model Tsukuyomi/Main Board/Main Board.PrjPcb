@@ -234,6 +234,10 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=LUUMTLDM
 
+[GeneratedDocument1]
+DocumentPath=Project Outputs for Main Board\Design Rule Check - Main Board.html
+DItemRevisionGUID=
+
 [Configuration1]
 Name=Sources
 ParameterCount=0
