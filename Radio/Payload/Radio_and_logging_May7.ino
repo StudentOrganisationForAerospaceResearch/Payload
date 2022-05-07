@@ -40,7 +40,7 @@
 #include <Adafruit_ISM330DHCX.h> //libraries needed for IMU (ISM330DHCX)
 #include <SparkFun_u-blox_GNSS_Arduino_Library.h> //library needed for GPS(GNSS ZOE-Click)
 #include <SX128XLT.h>  //libraries needed for radio (DLP-RFS1280)
-#include "Settings_esp.h" //libraries needed for frequencies, LoRa settings etc for ESP32
+#include "Settings_ESP.h" //libraries needed for frequencies, LoRa settings etc for ESP32
 #include "DFRobot_BMM150.h" //libraries needed for BMM150 Breakout (DFRobot SEN0419)
 #include <Adafruit_TMP117.h> //libraries needed for TMP117 Breakout (Adafruit TMP117)
 #include <Adafruit_MPU6050.h> //libraries needed for the 2nd IMU (MPU6050)
