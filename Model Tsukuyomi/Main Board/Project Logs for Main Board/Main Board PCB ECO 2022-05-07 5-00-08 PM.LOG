@@ -1,0 +1,4 @@
+Added Pin To Net: NetName=NetIC5_10 Pin=IC5-10
+Added Pin To Net: NetName=NetIC5_10 Pin=P5-4
+Added Net: Name=NetIC5_10
+Added Room: Name=ModelT_MainBoard
