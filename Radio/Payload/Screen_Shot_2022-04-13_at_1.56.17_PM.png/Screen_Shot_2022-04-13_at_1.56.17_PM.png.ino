@@ -68,6 +68,7 @@ void setup()
 {
     Serial.begin(115200);
     Wire.begin(); //For i2c 
+    //Wire.setClock(400000);
     SPI.begin(); //For VSPI (Used for Radio)
     SPI2.begin(); //FOR HSPI (Used for GPS)
 
@@ -93,6 +94,7 @@ void setup()
     bme.setPressureOversampling(BME680_OS_4X);
     bme.setIIRFilterSize(BME680_FILTER_SIZE_3);
     bme.setGasHeater(320, 150); // 320*C for 150 ms
+    //bme.setODR(BME68X_ODR_20_MS);
     flash(500);
 
     //connecting to magnetometer 
@@ -110,7 +112,7 @@ void setup()
     }
     myGNSS.setPortOutput(COM_PORT_SPI, COM_TYPE_UBX); //Set the SPI port to output UBX only (turn off NMEA noise)
     myGNSS.saveConfigSelective(VAL_CFG_SUBSEC_IOPORT); //Save (only) the communications port settings to flash and BBR
-    myGNSS.setNavigationFrequency(5);
+    myGNSS.setNavigationFrequency(2);
     flash(500);
 
     //conneting to radio
