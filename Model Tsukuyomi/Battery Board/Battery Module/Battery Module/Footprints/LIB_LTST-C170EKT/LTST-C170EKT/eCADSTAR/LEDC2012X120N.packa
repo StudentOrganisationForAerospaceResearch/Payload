@@ -1,0 +1,13 @@
+(unit MM)
+
+(package "LTST-C170EKT"
+    (type UNDEF)
+    (uver 2)
+    (cuser "SamacSys")
+    (uuser "SamacSys")
+    (utime 2019-04-14-15:57:43)
+    (mountForm default
+        (footprintRef "LEDC2012X120N")
+        (spec "System")
+    )
+)

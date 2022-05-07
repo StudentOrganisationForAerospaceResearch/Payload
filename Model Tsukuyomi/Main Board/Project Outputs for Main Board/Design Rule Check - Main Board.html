@@ -1,0 +1,868 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD21\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">2022-05-06</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">9:14:19 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc" class="file"><acronym title="H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc">H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">180</td></tr>
+</table>
+</td>
+</table><a name="ID1FAZJ0SLNODQJMPOCIV1ORKHEIJHVR21NDFT11I5LJZYY2JQFYKM"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDS3NHT35RMHBEO20X25KFM0G0WGKKKBFQABLNZBGWRVMREXONT4DC">Clearance Constraint (Gap=0.2mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDKC5RUPFZBO5CBM05RUT0COYS4HZF3HGTAU4G1HTQK1VZ4EAWAGM">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDJO1JQ3ZKI00TEYNQQY2E5RUPQKU534MECMMSHEEH0XR4PSVUZUWB">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">180</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDRJF20SZ4JLQKK0VCFHWTY43MLF0T55J00BR1IQO3IKM1L543XBIE">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDGSNOPS532KSHPX4YN2EZ4Z2Z33U10RLOGHPS4DQBLDYVZPBB45L">Width Constraint (Min=10mil) (Max=10mil) (Preferred=10mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDJDTMHBUMCPICC5JQKTUKN1XD0CIAMAV2ZLLJPHBXO15XX4SEJHIG">Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDQSEFXGUW2K3KMRLSSTVDKVCA5NQ3RIEKZPF1CFIUBGJCWKXRRJFI">Hole Size Constraint (Min=1mil) (Max=100mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID2H5YIHYIXS5OJRXW1O1ZJZNJSCREBPZUS3FYORDUNEXVZKH53MQP">Hole To Hole Clearance (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDA1VFUM0HG3QKM4GDVEUR3ZU1YKO15GJ0QFC31VNGUSDETJTKTY2E">Minimum Solder Mask Sliver (Gap=1mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDXDHZAFFNN2OVKP5BPFX4I3NONMF2WCAPTFXIG2K34YZ1QNHMZZJD">Silk To Solder Mask (Clearance=5mil) (IsText),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDNKWWRK4MHFE0CO0AOXVZBRXAYNDZ2XKJ1EVAKIGHHYP0VIAQWBLE">Silk to Silk (Clearance=5mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDRRX4M4UCWWV2CHJPE4S1K0UPXKMXKIVROAXLKSD5UAE5PSZLA3HK">Net Antennae (Tolerance=0mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDB1YQ1XLKBSBYBTUD4V4FCXKCIZDGEAR1BQUMCFOUMWH1G2ZI1SL">Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">180</td>
+</tr>
+</table><br><a name="IDJO1JQ3ZKI00TEYNQQY2E5RUPQKU534MECMMSHEEH0XR4PSVUZUWB"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4197.417mil|Location2.X=4251.185mil|Location1.Y=4359.921mil|Location2.Y=4528.465mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4197.417mil|Location2.X=4251.185mil|Location1.Y=4359.921mil|Location2.Y=4528.465mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC3-3(3210.768mil,-631.158mil) on Top Layer [Unplated] And Pad C10-1(3225.532mil,-509mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4093.579mil|Location2.X=4144.886mil|Location1.Y=4379.606mil|Location2.Y=4528.465mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4093.579mil|Location2.X=4144.886mil|Location1.Y=4379.606mil|Location2.Y=4528.465mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad IC3-8(3119.232mil,-611.472mil) on Top Layer [Unplated] And Pad C10-2(3119.232mil,-509mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3976.535mil|Location2.X=4056.465mil|Location1.Y=3736.197mil|Location2.Y=4336.504mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3976.535mil|Location2.X=4056.465mil|Location1.Y=3736.197mil|Location2.Y=4336.504mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C8-1(3014mil,-689.15mil) on Top Layer And Pad C1-1(3019mil,-1238.15mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3603.252mil|Location2.X=4056.465mil|Location1.Y=3736.197mil|Location2.Y=3974.079mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3603.252mil|Location2.X=4056.465mil|Location1.Y=3736.197mil|Location2.Y=3974.079mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC1-1(2624.969mil,-1059.449mil) on Top Layer [Unplated] And Pad C1-1(3019mil,-1238.15mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3981.535mil|Location2.X=4160.039mil|Location1.Y=3736.197mil|Location2.Y=3787.504mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3981.535mil|Location2.X=4160.039mil|Location1.Y=3736.197mil|Location2.Y=3787.504mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C1-1(3019mil,-1238.15mil) on Top Layer And Pad IC2-4(3134.386mil,-1238.15mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3553.252mil|Location2.X=4056.465mil|Location1.Y=3842.496mil|Location2.Y=3974.079mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3553.252mil|Location2.X=4056.465mil|Location1.Y=3842.496mil|Location2.Y=3974.079mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad IC1-2(2574.969mil,-1059.449mil) on Top Layer [Unplated] And Pad C1-2(3019mil,-1131.85mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3981.535mil|Location2.X=4160.039mil|Location1.Y=3842.496mil|Location2.Y=3893.803mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3981.535mil|Location2.X=4160.039mil|Location1.Y=3842.496mil|Location2.Y=3893.803mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad C1-2(3019mil,-1131.85mil) on Top Layer And Pad IC2-2(3134.386mil,-1139.724mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2290.496mil|Location2.X=2695.512mil|Location1.Y=2178.535mil|Location2.Y=2439.976mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2290.496mil|Location2.X=2695.512mil|Location1.Y=2178.535mil|Location2.Y=2439.976mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C6-1(1316.15mil,-2784mil) on Bottom Layer And Pad IC5-15(1673.795mil,-2593.551mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2290.496mil|Location2.X=2357.716mil|Location1.Y=2178.535mil|Location2.Y=2658.48mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2290.496mil|Location2.X=2357.716mil|Location1.Y=2178.535mil|Location2.Y=2658.48mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C6-1(1316.15mil,-2784mil) on Bottom Layer And Pad IC5-40(1336mil,-2363.236mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2279.472mil|Location2.X=2346.528mil|Location1.Y=2071.472mil|Location2.Y=2253.465mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2279.472mil|Location2.X=2346.528mil|Location1.Y=2071.472mil|Location2.Y=2253.465mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad P5-6(1313mil,-2895mil) on Multi-Layer And Pad C6-1(1316.15mil,-2784mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2184.197mil|Location2.X=3129.795mil|Location1.Y=2178.535mil|Location2.Y=2420.748mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2184.197mil|Location2.X=3129.795mil|Location1.Y=2178.535mil|Location2.Y=2420.748mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad C6-2(1209.85mil,-2784mil) on Bottom Layer And Pad IC6-7(2113mil,-2615.732mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2179.472mil|Location2.X=2246.528mil|Location1.Y=2071.472mil|Location2.Y=2253.465mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2179.472mil|Location2.X=2246.528mil|Location1.Y=2071.472mil|Location2.Y=2253.465mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad C6-2(1209.85mil,-2784mil) on Bottom Layer And Pad P5-7(1213mil,-2895mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1991.693mil|Location2.X=2235.504mil|Location1.Y=2178.535mil|Location2.Y=2303.717mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1991.693mil|Location2.X=2235.504mil|Location1.Y=2178.535mil|Location2.Y=2303.717mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R6-1(1009.472mil,-2718mil) on Top Layer And Pad C6-2(1209.85mil,-2784mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2996.205mil|Location2.X=3291.577mil|Location1.Y=2564.496mil|Location2.Y=2704.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2996.205mil|Location2.X=3291.577mil|Location1.Y=2564.496mil|Location2.Y=2704.213mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC6-4(2013mil,-2332.268mil) on Top Layer [Unplated] And Pad C7-1(2254.112mil,-2409.85mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3198.472mil|Location2.X=3291.577mil|Location1.Y=2564.496mil|Location2.Y=2888.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3198.472mil|Location2.X=3291.577mil|Location1.Y=2564.496mil|Location2.Y=2888.528mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad P11-2(2232mil,-2145mil) on Multi-Layer And Pad C7-1(2254.112mil,-2409.85mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3105.472mil|Location2.X=3291.577mil|Location1.Y=1641.473mil|Location2.Y=2615.803mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3105.472mil|Location2.X=3291.577mil|Location1.Y=1641.473mil|Location2.Y=2615.803mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad P1-2(2139mil,-3325mil) on Multi-Layer And Pad C7-1(2254.112mil,-2409.85mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3216.648mil|Location2.X=3736.228mil|Location1.Y=2564.496mil|Location2.Y=2670.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3216.648mil|Location2.X=3736.228mil|Location1.Y=2564.496mil|Location2.Y=2670.528mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C7-1(2254.112mil,-2409.85mil) on Top Layer And Pad P4-7(2702.701mil,-2363mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3146.205mil|Location2.X=3291.577mil|Location1.Y=2347.787mil|Location2.Y=2509.504mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3146.205mil|Location2.X=3291.577mil|Location1.Y=2347.787mil|Location2.Y=2509.504mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad IC6-8(2163mil,-2615.732mil) on Top Layer [Unplated] And Pad C7-2(2254.112mil,-2516.15mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3976.535mil|Location2.X=4224.118mil|Location1.Y=4285.197mil|Location2.Y=4338.394mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3976.535mil|Location2.X=4224.118mil|Location1.Y=4285.197mil|Location2.Y=4338.394mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C8-1(3014mil,-689.15mil) on Top Layer And Pad IC3-1(3210.768mil,-670.528mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3795.472mil|Location2.X=4051.465mil|Location1.Y=4285.197mil|Location2.Y=4823.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3795.472mil|Location2.X=4051.465mil|Location1.Y=4285.197mil|Location2.Y=4823.528mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad P8-1(2829mil,-210mil) on Multi-Layer And Pad C8-1(3014mil,-689.15mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3976.535mil|Location2.X=4132.583mil|Location1.Y=4379.606mil|Location2.Y=4442.803mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3976.535mil|Location2.X=4132.583mil|Location1.Y=4379.606mil|Location2.Y=4442.803mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad C8-2(3014mil,-582.85mil) on Top Layer And Pad IC3-8(3119.232mil,-611.472mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3181.37mil|Location2.X=3355.465mil|Location1.Y=4764.37mil|Location2.Y=4831.654mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3181.37mil|Location2.X=3355.465mil|Location1.Y=4764.37mil|Location2.Y=4831.654mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC4-1(2193.244mil,-223.756mil) on Top Layer [Unplated] And Pad C9-1(2318mil,-194mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3280.535mil|Location2.X=3862.528mil|Location1.Y=4756.472mil|Location2.Y=4831.654mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3280.535mil|Location2.X=3862.528mil|Location1.Y=4756.472mil|Location2.Y=4831.654mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C9-1(2318mil,-194mil) on Top Layer And Pad P8-1(2829mil,-210mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3181.37mil|Location2.X=3355.465mil|Location1.Y=4674.047mil|Location2.Y=4756.622mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3181.37mil|Location2.X=3355.465mil|Location1.Y=4674.047mil|Location2.Y=4756.622mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad IC4-2(2193.244mil,-255.252mil) on Top Layer [Unplated] And Pad C9-2(2318mil,-300.299mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3351.284mil|Location2.X=3646.685mil|Location1.Y=3688.52mil|Location2.Y=3974.079mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3351.284mil|Location2.X=3646.685mil|Location1.Y=3688.52mil|Location2.Y=3974.079mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC1-46(2373mil,-1289.764mil) on Top Layer [Unplated] And Pad IC1-1(2624.969mil,-1059.449mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3153.252mil|Location2.X=4036.228mil|Location1.Y=1911.473mil|Location2.Y=3974.079mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3153.252mil|Location2.X=4036.228mil|Location1.Y=1911.473mil|Location2.Y=3974.079mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_10 Between Pad IC1-10(2174.969mil,-1059.449mil) on Top Layer [Unplated] And Pad P3-4(3002.701mil,-3055mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3103.252mil|Location2.X=4136.228mil|Location1.Y=1911.473mil|Location2.Y=3974.079mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3103.252mil|Location2.X=4136.228mil|Location1.Y=1911.473mil|Location2.Y=3974.079mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_11 Between Pad IC1-11(2124.969mil,-1059.449mil) on Top Layer [Unplated] And Pad P3-3(3102.701mil,-3055mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3053.252mil|Location2.X=4236.228mil|Location1.Y=1911.473mil|Location2.Y=3974.079mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3053.252mil|Location2.X=4236.228mil|Location1.Y=1911.473mil|Location2.Y=3974.079mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_12 Between Pad IC1-12(2074.969mil,-1059.449mil) on Top Layer [Unplated] And Pad P3-2(3202.701mil,-3055mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2930.472mil|Location2.X=3046.685mil|Location1.Y=3907.024mil|Location2.Y=4423.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2930.472mil|Location2.X=3046.685mil|Location1.Y=3907.024mil|Location2.Y=4423.528mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_13 Between Pad P7-4(1964mil,-610mil) on Multi-Layer And Pad IC1-13(2024.969mil,-1059.449mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2903.252mil|Location2.X=3284.48mil|Location1.Y=3688.52mil|Location2.Y=3974.079mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2903.252mil|Location2.X=3284.48mil|Location1.Y=3688.52mil|Location2.Y=3974.079mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC1-15(1924.969mil,-1059.449mil) on Top Layer [Unplated] And Pad IC1-40(2262.764mil,-1289.764mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2853.252mil|Location2.X=2997.528mil|Location1.Y=3907.024mil|Location2.Y=4623.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2853.252mil|Location2.X=2997.528mil|Location1.Y=3907.024mil|Location2.Y=4623.528mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_16 Between Pad IC1-16(1874.969mil,-1059.449mil) on Top Layer [Unplated] And Pad P7-6(1964mil,-410mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3399.472mil|Location2.X=3596.685mil|Location1.Y=3041.472mil|Location2.Y=3974.079mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3399.472mil|Location2.X=3596.685mil|Location1.Y=3041.472mil|Location2.Y=3974.079mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad P9-5(2433mil,-1925mil) on Multi-Layer And Pad IC1-2(2574.969mil,-1059.449mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3553.252mil|Location2.X=3606.307mil|Location1.Y=3907.024mil|Location2.Y=4091.716mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3553.252mil|Location2.X=3606.307mil|Location1.Y=3907.024mil|Location2.Y=4091.716mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad IC1-2(2574.969mil,-1059.449mil) on Top Layer [Unplated] And Pad R3-1(2588.528mil,-930mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2853.252mil|Location2.X=2997.528mil|Location1.Y=3218.047mil|Location2.Y=4323.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2853.252mil|Location2.X=2997.528mil|Location1.Y=3218.047mil|Location2.Y=4323.528mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_23 Between Pad IC1-23(1874.969mil,-1748.425mil) on Top Layer [Unplated] And Pad P7-3(1964mil,-710mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2285.284mil|Location2.X=2946.685mil|Location1.Y=3218.047mil|Location2.Y=4629.779mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2285.284mil|Location2.X=2946.685mil|Location1.Y=3218.047mil|Location2.Y=4629.779mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_24 Between Pad R21-2(1307mil,-388mil) on Top Layer And Pad IC1-24(1924.969mil,-1748.425mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2930.472mil|Location2.X=3046.685mil|Location1.Y=3218.047mil|Location2.Y=4523.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2930.472mil|Location2.X=3046.685mil|Location1.Y=3218.047mil|Location2.Y=4523.528mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_26 Between Pad P7-5(1964mil,-510mil) on Multi-Layer And Pad IC1-26(2024.969mil,-1748.425mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3153.252mil|Location2.X=3936.228mil|Location1.Y=2603.472mil|Location2.Y=3285.102mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3153.252mil|Location2.X=3936.228mil|Location1.Y=2603.472mil|Location2.Y=3285.102mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_29 Between Pad IC1-29(2174.969mil,-1748.425mil) on Top Layer [Unplated] And Pad P4-5(2902.701mil,-2363mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3503.252mil|Location2.X=3547.252mil|Location1.Y=3907.024mil|Location2.Y=4091.716mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3503.252mil|Location2.X=3547.252mil|Location1.Y=3907.024mil|Location2.Y=4091.716mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_3 Between Pad IC1-3(2524.969mil,-1059.449mil) on Top Layer [Unplated] And Pad R3-2(2529.472mil,-930mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3203.252mil|Location2.X=4036.228mil|Location1.Y=2603.472mil|Location2.Y=3285.102mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3203.252mil|Location2.X=4036.228mil|Location1.Y=2603.472mil|Location2.Y=3285.102mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_30 Between Pad IC1-30(2224.969mil,-1748.425mil) on Top Layer [Unplated] And Pad P4-4(3002.701mil,-2363mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3253.252mil|Location2.X=3736.228mil|Location1.Y=1911.473mil|Location2.Y=3285.102mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3253.252mil|Location2.X=3736.228mil|Location1.Y=1911.473mil|Location2.Y=3285.102mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_31 Between Pad IC1-31(2274.969mil,-1748.425mil) on Top Layer [Unplated] And Pad P3-7(2702.701mil,-3055mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3299.472mil|Location2.X=3396.685mil|Location1.Y=3041.472mil|Location2.Y=3285.102mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3299.472mil|Location2.X=3396.685mil|Location1.Y=3041.472mil|Location2.Y=3285.102mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_33 Between Pad P9-4(2333mil,-1925mil) on Multi-Layer And Pad IC1-33(2374.969mil,-1748.425mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3503.252mil|Location2.X=4016.528mil|Location1.Y=2940.472mil|Location2.Y=3285.102mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3503.252mil|Location2.X=4016.528mil|Location1.Y=2940.472mil|Location2.Y=3285.102mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_36 Between Pad IC1-36(2524.969mil,-1748.425mil) on Top Layer [Unplated] And Pad P10-4(2983mil,-2026mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3199.472mil|Location2.X=3546.685mil|Location1.Y=3041.472mil|Location2.Y=3285.102mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3199.472mil|Location2.X=3546.685mil|Location1.Y=3041.472mil|Location2.Y=3285.102mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_36 Between Pad P9-3(2233mil,-1925mil) on Multi-Layer And Pad IC1-36(2524.969mil,-1748.425mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3553.252mil|Location2.X=4136.228mil|Location1.Y=2603.472mil|Location2.Y=3285.102mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3553.252mil|Location2.X=4136.228mil|Location1.Y=2603.472mil|Location2.Y=3285.102mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_37 Between Pad IC1-37(2574.969mil,-1748.425mil) on Top Layer [Unplated] And Pad P4-3(3102.701mil,-2363mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3351.284mil|Location2.X=3646.685mil|Location1.Y=3218.047mil|Location2.Y=3621.716mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3351.284mil|Location2.X=3646.685mil|Location1.Y=3218.047mil|Location2.Y=3621.716mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC1-44(2373mil,-1400mil) on Top Layer [Unplated] And Pad IC1-38(2624.969mil,-1748.425mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3499.472mil|Location2.X=3646.685mil|Location1.Y=3041.472mil|Location2.Y=3285.102mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3499.472mil|Location2.X=3646.685mil|Location1.Y=3041.472mil|Location2.Y=3285.102mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad P9-6(2533mil,-1925mil) on Multi-Layer And Pad IC1-38(2624.969mil,-1748.425mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3241.047mil|Location2.X=3339.598mil|Location1.Y=3633.402mil|Location2.Y=3676.835mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3241.047mil|Location2.X=3339.598mil|Location1.Y=3633.402mil|Location2.Y=3676.835mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC1-41(2262.764mil,-1344.882mil) on Top Layer [Unplated] And Pad IC1-39(2317.882mil,-1344.882mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3296.165mil|Location2.X=3394.716mil|Location1.Y=3633.402mil|Location2.Y=3676.835mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3296.165mil|Location2.X=3394.716mil|Location1.Y=3633.402mil|Location2.Y=3676.835mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC1-39(2317.882mil,-1344.882mil) on Top Layer [Unplated] And Pad IC1-45(2373mil,-1344.882mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3241.047mil|Location2.X=3284.48mil|Location1.Y=3633.402mil|Location2.Y=3731.953mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3241.047mil|Location2.X=3284.48mil|Location1.Y=3633.402mil|Location2.Y=3731.953mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC1-41(2262.764mil,-1344.882mil) on Top Layer [Unplated] And Pad IC1-40(2262.764mil,-1289.764mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3241.047mil|Location2.X=3339.598mil|Location1.Y=3578.284mil|Location2.Y=3621.716mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3241.047mil|Location2.X=3339.598mil|Location1.Y=3578.284mil|Location2.Y=3621.716mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC1-42(2262.764mil,-1400mil) on Top Layer [Unplated] And Pad IC1-43(2317.882mil,-1400mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3296.165mil|Location2.X=3394.716mil|Location1.Y=3578.284mil|Location2.Y=3621.716mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3296.165mil|Location2.X=3394.716mil|Location1.Y=3578.284mil|Location2.Y=3621.716mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC1-43(2317.882mil,-1400mil) on Top Layer [Unplated] And Pad IC1-44(2373mil,-1400mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3351.284mil|Location2.X=3394.716mil|Location1.Y=3578.284mil|Location2.Y=3676.835mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3351.284mil|Location2.X=3394.716mil|Location1.Y=3578.284mil|Location2.Y=3676.835mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC1-44(2373mil,-1400mil) on Top Layer [Unplated] And Pad IC1-45(2373mil,-1344.882mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3351.284mil|Location2.X=3394.716mil|Location1.Y=3633.402mil|Location2.Y=3731.953mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3351.284mil|Location2.X=3394.716mil|Location1.Y=3633.402mil|Location2.Y=3731.953mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC1-45(2373mil,-1344.882mil) on Top Layer [Unplated] And Pad IC1-46(2373mil,-1289.764mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3296.165mil|Location2.X=3394.716mil|Location1.Y=3688.52mil|Location2.Y=3731.953mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3296.165mil|Location2.X=3394.716mil|Location1.Y=3688.52mil|Location2.Y=3731.953mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC1-47(2317.882mil,-1289.764mil) on Top Layer [Unplated] And Pad IC1-46(2373mil,-1289.764mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2289.284mil|Location2.X=3296.685mil|Location1.Y=3907.024mil|Location2.Y=4389.779mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2289.284mil|Location2.X=3296.685mil|Location1.Y=3907.024mil|Location2.Y=4389.779mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_8 Between Pad R19-2(1311mil,-628mil) on Top Layer And Pad IC1-8(2274.969mil,-1059.449mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1160.5mil|Location2.X=3246.685mil|Location1.Y=2354mil|Location2.Y=3974.079mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1160.5mil|Location2.X=3246.685mil|Location1.Y=2354mil|Location2.Y=3974.079mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_9 Between Pad LED2-1(184mil,-2622.5mil) on Top Layer And Pad IC1-9(2224.969mil,-1059.449mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4108.732mil|Location2.X=4160.039mil|Location1.Y=3844.465mil|Location2.Y=3925.299mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4108.732mil|Location2.X=4160.039mil|Location1.Y=3844.465mil|Location2.Y=3925.299mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad IC2-2(3134.386mil,-1139.724mil) on Top Layer [Unplated] And Pad IC2-1(3134.386mil,-1090.512mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4108.732mil|Location2.X=4234.307mil|Location1.Y=3893.677mil|Location2.Y=4212.716mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4108.732mil|Location2.X=4234.307mil|Location1.Y=3893.677mil|Location2.Y=4212.716mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad IC2-1(3134.386mil,-1090.512mil) on Top Layer [Unplated] And Pad R4-1(3216.528mil,-809mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4108.732mil|Location2.X=4160.039mil|Location1.Y=3746.039mil|Location2.Y=3826.874mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4108.732mil|Location2.X=4160.039mil|Location1.Y=3746.039mil|Location2.Y=3826.874mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC2-4(3134.386mil,-1238.15mil) on Top Layer [Unplated] And Pad IC2-3(3134.386mil,-1188.937mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4108.732mil|Location2.X=4246.654mil|Location1.Y=3746.039mil|Location2.Y=3777.661mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4108.732mil|Location2.X=4246.654mil|Location1.Y=3746.039mil|Location2.Y=3777.661mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC2-4(3134.386mil,-1238.15mil) on Top Layer [Unplated] And Pad IC2-5(3221mil,-1238.15mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4049.472mil|Location2.X=4246.654mil|Location1.Y=2940.472mil|Location2.Y=3876.087mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4049.472mil|Location2.X=4246.654mil|Location1.Y=2940.472mil|Location2.Y=3876.087mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_33 Between Pad P10-3(3083mil,-2026mil) on Multi-Layer And Pad IC2-7(3221mil,-1139.724mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4195.346mil|Location2.X=4304.779mil|Location1.Y=3844.465mil|Location2.Y=4267.717mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4195.346mil|Location2.X=4304.779mil|Location1.Y=3844.465mil|Location2.Y=4267.717mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_33 Between Pad IC2-7(3221mil,-1139.724mil) on Top Layer [Unplated] And Pad R11-2(3287mil,-754mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4156.079mil|Location2.X=4246.654mil|Location1.Y=3893.677mil|Location2.Y=4336.425mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4156.079mil|Location2.X=4246.654mil|Location1.Y=3893.677mil|Location2.Y=4336.425mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_36 Between Pad IC3-13(3165mil,-676.925mil) on Top Layer [Unplated] And Pad IC2-8(3221mil,-1090.512mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3949.472mil|Location2.X=4246.654mil|Location1.Y=2940.472mil|Location2.Y=3925.299mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3949.472mil|Location2.X=4246.654mil|Location1.Y=2940.472mil|Location2.Y=3925.299mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_36 Between Pad P10-4(2983mil,-2026mil) on Multi-Layer And Pad IC2-8(3221mil,-1090.512mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4197.417mil|Location2.X=4224.118mil|Location1.Y=4320.551mil|Location2.Y=4358.079mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4197.417mil|Location2.X=4224.118mil|Location1.Y=4320.551mil|Location2.Y=4358.079mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC3-1(3210.768mil,-670.528mil) on Top Layer [Unplated] And Pad IC3-2(3210.768mil,-650.842mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4136.394mil|Location2.X=4175.252mil|Location1.Y=4169.283mil|Location2.Y=4336.425mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4136.394mil|Location2.X=4175.252mil|Location1.Y=4169.283mil|Location2.Y=4336.425mil|Absolute=True">Un-Routed Net Constraint: Net NetIC3_12 Between Pad IC3-12(3145.315mil,-676.925mil) on Top Layer [Unplated] And Pad R4-2(3157.472mil,-809mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3993.221mil|Location2.X=4173.921mil|Location1.Y=4213.283mil|Location2.Y=4336.425mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3993.221mil|Location2.X=4173.921mil|Location1.Y=4213.283mil|Location2.Y=4336.425mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_36 Between Pad R10-2(3011mil,-765mil) on Top Layer And Pad IC3-13(3165mil,-676.925mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4175.764mil|Location2.X=4304.779mil|Location1.Y=4224.283mil|Location2.Y=4336.425mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4175.764mil|Location2.X=4304.779mil|Location1.Y=4224.283mil|Location2.Y=4336.425mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_33 Between Pad IC3-14(3184.685mil,-676.925mil) on Top Layer [Unplated] And Pad R11-2(3287mil,-754mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3156.276mil|Location2.X=4193.606mil|Location1.Y=4309.724mil|Location2.Y=4511.717mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3156.276mil|Location2.X=4193.606mil|Location1.Y=4309.724mil|Location2.Y=4511.717mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_33 Between Pad R9-2(2174.055mil,-510mil) on Top Layer And Pad IC3-14(3184.685mil,-676.925mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4197.417mil|Location2.X=4224.118mil|Location1.Y=4340.236mil|Location2.Y=4377.764mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4197.417mil|Location2.X=4224.118mil|Location1.Y=4340.236mil|Location2.Y=4377.764mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC3-2(3210.768mil,-650.842mil) on Top Layer [Unplated] And Pad IC3-3(3210.768mil,-631.158mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4156.079mil|Location2.X=4224.118mil|Location1.Y=4359.921mil|Location2.Y=4408.276mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4156.079mil|Location2.X=4224.118mil|Location1.Y=4359.921mil|Location2.Y=4408.276mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC3-6(3165mil,-605.075mil) on Top Layer [Unplated] And Pad IC3-3(3210.768mil,-631.158mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4105.882mil|Location2.X=4193.606mil|Location1.Y=4379.606mil|Location2.Y=4408.276mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4105.882mil|Location2.X=4193.606mil|Location1.Y=4379.606mil|Location2.Y=4408.276mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad IC3-8(3119.232mil,-611.472mil) on Top Layer [Unplated] And Pad IC3-5(3184.685mil,-605.075mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4136.394mil|Location2.X=4173.921mil|Location1.Y=4381.575mil|Location2.Y=4408.276mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4136.394mil|Location2.X=4173.921mil|Location1.Y=4381.575mil|Location2.Y=4408.276mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC3-7(3145.315mil,-605.075mil) on Top Layer [Unplated] And Pad IC3-6(3165mil,-605.075mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4052.276mil|Location2.X=4132.583mil|Location1.Y=4213.283mil|Location2.Y=4397.449mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4052.276mil|Location2.X=4132.583mil|Location1.Y=4213.283mil|Location2.Y=4397.449mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R10-1(3070.055mil,-765mil) on Top Layer And Pad IC3-8(3119.232mil,-611.472mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3086.882mil|Location2.X=3205.118mil|Location1.Y=4732.874mil|Location2.Y=4788.118mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3086.882mil|Location2.X=3205.118mil|Location1.Y=4732.874mil|Location2.Y=4788.118mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC4-7(2098.756mil,-255.252mil) on Top Layer [Unplated] And Pad IC4-1(2193.244mil,-223.756mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3086.882mil|Location2.X=3205.118mil|Location1.Y=4701.378mil|Location2.Y=4756.622mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3086.882mil|Location2.X=3205.118mil|Location1.Y=4701.378mil|Location2.Y=4756.622mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad IC4-6(2098.756mil,-286.748mil) on Top Layer [Unplated] And Pad IC4-2(2193.244mil,-255.252mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3156.276mil|Location2.X=3205.118mil|Location1.Y=4571.283mil|Location2.Y=4725.126mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3156.276mil|Location2.X=3205.118mil|Location1.Y=4571.283mil|Location2.Y=4725.126mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_33 Between Pad R13-1(2174.055mil,-407mil) on Top Layer And Pad IC4-3(2193.244mil,-286.748mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3156.276mil|Location2.X=3205.118mil|Location1.Y=4360.283mil|Location2.Y=4693.63mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3156.276mil|Location2.X=3205.118mil|Location1.Y=4360.283mil|Location2.Y=4693.63mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_36 Between Pad R12-1(2174.055mil,-618mil) on Top Layer And Pad IC4-4(2193.244mil,-318.244mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3086.882mil|Location2.X=3110.63mil|Location1.Y=4669.882mil|Location2.Y=4756.622mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3086.882mil|Location2.X=3110.63mil|Location1.Y=4669.882mil|Location2.Y=4756.622mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC4-5(2098.756mil,-318.244mil) on Top Layer [Unplated] And Pad IC4-7(2098.756mil,-255.252mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3086.882mil|Location2.X=3110.63mil|Location1.Y=4701.378mil|Location2.Y=4788.118mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3086.882mil|Location2.X=3110.63mil|Location1.Y=4701.378mil|Location2.Y=4788.118mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad IC4-6(2098.756mil,-286.748mil) on Top Layer [Unplated] And Pad IC4-8(2098.756mil,-223.756mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2930.472mil|Location2.X=3110.63mil|Location1.Y=4656.472mil|Location2.Y=4725.126mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2930.472mil|Location2.X=3110.63mil|Location1.Y=4656.472mil|Location2.Y=4725.126mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad P7-7(1964mil,-310mil) on Multi-Layer And Pad IC4-6(2098.756mil,-286.748mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3086.882mil|Location2.X=3132.78mil|Location1.Y=4571.283mil|Location2.Y=4725.126mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3086.882mil|Location2.X=3132.78mil|Location1.Y=4571.283mil|Location2.Y=4725.126mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad IC4-6(2098.756mil,-286.748mil) on Top Layer [Unplated] And Pad R13-2(2115mil,-407mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2930.472mil|Location2.X=3110.63mil|Location1.Y=4732.874mil|Location2.Y=4823.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2930.472mil|Location2.X=3110.63mil|Location1.Y=4732.874mil|Location2.Y=4823.528mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad P7-8(1964mil,-210mil) on Multi-Layer And Pad IC4-7(2098.756mil,-255.252mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1952.079mil|Location2.X=2247.48mil|Location1.Y=2372.921mil|Location2.Y=2658.48mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1952.079mil|Location2.X=2247.48mil|Location1.Y=2372.921mil|Location2.Y=2658.48mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC5-1(973.795mil,-2593.551mil) on Top Layer [Unplated] And Pad IC5-46(1225.764mil,-2363.236mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1417.22mil|Location2.X=1995.512mil|Location1.Y=2255.284mil|Location2.Y=2439.976mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1417.22mil|Location2.X=1995.512mil|Location1.Y=2255.284mil|Location2.Y=2439.976mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad R18-2(435mil,-2723mil) on Top Layer And Pad IC5-1(973.795mil,-2593.551mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2379.472mil|Location2.X=2595.512mil|Location1.Y=2071.472mil|Location2.Y=2439.976mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2379.472mil|Location2.X=2595.512mil|Location1.Y=2071.472mil|Location2.Y=2439.976mil|Absolute=True">Un-Routed Net Constraint: Net NetIC5_13 Between Pad P5-5(1413mil,-2895mil) on Multi-Layer And Pad IC5-13(1573.795mil,-2593.551mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1152.441mil|Location2.X=2645.512mil|Location1.Y=2040.449mil|Location2.Y=2439.976mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1152.441mil|Location2.X=2645.512mil|Location1.Y=2040.449mil|Location2.Y=2439.976mil|Absolute=True">Un-Routed Net Constraint: Net NetIC5_14 Between Pad LED1-1(184mil,-2935.866mil) on Top Layer [Unplated] And Pad IC5-14(1623.795mil,-2593.551mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2652.079mil|Location2.X=3029.795mil|Location1.Y=2372.921mil|Location2.Y=2704.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2652.079mil|Location2.X=3029.795mil|Location1.Y=2372.921mil|Location2.Y=2704.213mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC5-15(1673.795mil,-2593.551mil) on Top Layer [Unplated] And Pad IC6-4(2013mil,-2332.268mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2579.472mil|Location2.X=2745.512mil|Location1.Y=2071.472mil|Location2.Y=2439.976mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2579.472mil|Location2.X=2745.512mil|Location1.Y=2071.472mil|Location2.Y=2439.976mil|Absolute=True">Un-Routed Net Constraint: Net NetIC5_16 Between Pad P5-3(1613mil,-2895mil) on Multi-Layer And Pad IC5-16(1723.795mil,-2593.551mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1991.693mil|Location2.X=2045.512mil|Location1.Y=2260.284mil|Location2.Y=2439.976mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1991.693mil|Location2.X=2045.512mil|Location1.Y=2260.284mil|Location2.Y=2439.976mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R6-1(1009.472mil,-2718mil) on Top Layer And Pad IC5-2(1023.795mil,-2593.551mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2679.472mil|Location2.X=2746.528mil|Location1.Y=2071.472mil|Location2.Y=3128.953mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2679.472mil|Location2.X=2746.528mil|Location1.Y=2071.472mil|Location2.Y=3128.953mil|Absolute=True">Un-Routed Net Constraint: Net NetIC5_23 Between Pad P5-2(1713mil,-2895mil) on Multi-Layer And Pad IC5-23(1723.795mil,-1904.575mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1631.267mil|Location2.X=2695.512mil|Location1.Y=3061.898mil|Location2.Y=4649.205mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1631.267mil|Location2.X=2695.512mil|Location1.Y=3061.898mil|Location2.Y=4649.205mil|Absolute=True">Un-Routed Net Constraint: Net NetIC5_24 Between Pad R22-2(652.984mil,-368.575mil) on Top Layer And Pad IC5-24(1673.795mil,-1904.575mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2479.472mil|Location2.X=2595.512mil|Location1.Y=2071.472mil|Location2.Y=3128.953mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2479.472mil|Location2.X=2595.512mil|Location1.Y=2071.472mil|Location2.Y=3128.953mil|Absolute=True">Un-Routed Net Constraint: Net NetIC5_26 Between Pad P5-4(1513mil,-2895mil) on Multi-Layer And Pad IC5-26(1573.795mil,-1904.575mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2402.079mil|Location2.X=3179.795mil|Location1.Y=2631.252mil|Location2.Y=3128.953mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2402.079mil|Location2.X=3179.795mil|Location1.Y=2631.252mil|Location2.Y=3128.953mil|Absolute=True">Un-Routed Net Constraint: Net NetIC5_29 Between Pad IC5-29(1423.795mil,-1904.575mil) on Top Layer [Unplated] And Pad IC6-1(2163mil,-2332.268mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2050.748mil|Location2.X=2095.512mil|Location1.Y=2260.284mil|Location2.Y=2439.976mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2050.748mil|Location2.X=2095.512mil|Location1.Y=2260.284mil|Location2.Y=2439.976mil|Absolute=True">Un-Routed Net Constraint: Net NetIC5_3 Between Pad R6-2(1068.528mil,-2718mil) on Top Layer And Pad IC5-3(1073.795mil,-2593.551mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2352.079mil|Location2.X=3079.795mil|Location1.Y=2347.787mil|Location2.Y=3128.953mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2352.079mil|Location2.X=3079.795mil|Location1.Y=2347.787mil|Location2.Y=3128.953mil|Absolute=True">Un-Routed Net Constraint: Net NetIC5_30 Between Pad IC5-30(1373.795mil,-1904.575mil) on Top Layer [Unplated] And Pad IC6-6(2063mil,-2615.732mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2302.079mil|Location2.X=3129.795mil|Location1.Y=2631.252mil|Location2.Y=3128.953mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2302.079mil|Location2.X=3129.795mil|Location1.Y=2631.252mil|Location2.Y=3128.953mil|Absolute=True">Un-Routed Net Constraint: Net NetIC5_31 Between Pad IC5-31(1323.795mil,-1904.575mil) on Top Layer [Unplated] And Pad IC6-2(2113mil,-2332.268mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2202.079mil|Location2.X=3065.528mil|Location1.Y=2821.472mil|Location2.Y=3128.953mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2202.079mil|Location2.X=3065.528mil|Location1.Y=2821.472mil|Location2.Y=3128.953mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_33 Between Pad IC5-33(1223.795mil,-1904.575mil) on Top Layer [Unplated] And Pad P11-4(2032mil,-2145mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2202.079mil|Location2.X=2289.528mil|Location1.Y=3061.898mil|Location2.Y=3313.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2202.079mil|Location2.X=2289.528mil|Location1.Y=3061.898mil|Location2.Y=3313.528mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_33 Between Pad IC5-33(1223.795mil,-1904.575mil) on Top Layer [Unplated] And Pad P14-3(1256mil,-1720mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1601.283mil|Location2.X=2245.512mil|Location1.Y=1850.22mil|Location2.Y=3128.953mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1601.283mil|Location2.X=2245.512mil|Location1.Y=1850.22mil|Location2.Y=3128.953mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_33 Between Pad R24-2(623mil,-3132mil) on Top Layer And Pad IC5-33(1223.795mil,-1904.575mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2052.079mil|Location2.X=2189.528mil|Location1.Y=3061.898mil|Location2.Y=3313.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2052.079mil|Location2.X=2189.528mil|Location1.Y=3061.898mil|Location2.Y=3313.528mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_36 Between Pad IC5-36(1073.795mil,-1904.575mil) on Top Layer [Unplated] And Pad P14-4(1156mil,-1720mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1501.283mil|Location2.X=2095.512mil|Location1.Y=1850.22mil|Location2.Y=3128.953mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1501.283mil|Location2.X=2095.512mil|Location1.Y=1850.22mil|Location2.Y=3128.953mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_36 Between Pad R1-2(523mil,-3132mil) on Top Layer And Pad IC5-36(1073.795mil,-1904.575mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2002.079mil|Location2.X=3029.795mil|Location1.Y=2347.787mil|Location2.Y=3128.953mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2002.079mil|Location2.X=3029.795mil|Location1.Y=2347.787mil|Location2.Y=3128.953mil|Absolute=True">Un-Routed Net Constraint: Net NetIC5_37 Between Pad IC5-37(1023.795mil,-1904.575mil) on Top Layer [Unplated] And Pad IC6-5(2013mil,-2615.732mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1952.079mil|Location2.X=2389.528mil|Location1.Y=3061.898mil|Location2.Y=3313.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1952.079mil|Location2.X=2389.528mil|Location1.Y=3061.898mil|Location2.Y=3313.528mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC5-38(973.795mil,-1904.575mil) on Top Layer [Unplated] And Pad P14-2(1356mil,-1720mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2259.165mil|Location2.X=2357.716mil|Location1.Y=2670.165mil|Location2.Y=2713.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2259.165mil|Location2.X=2357.716mil|Location1.Y=2670.165mil|Location2.Y=2713.598mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC5-39(1280.882mil,-2308.118mil) on Top Layer [Unplated] And Pad IC5-41(1336mil,-2308.118mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2314.284mil|Location2.X=2357.716mil|Location1.Y=2615.047mil|Location2.Y=2713.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2314.284mil|Location2.X=2357.716mil|Location1.Y=2615.047mil|Location2.Y=2713.598mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC5-40(1336mil,-2363.236mil) on Top Layer [Unplated] And Pad IC5-41(1336mil,-2308.118mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2259.165mil|Location2.X=2357.716mil|Location1.Y=2615.047mil|Location2.Y=2658.48mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2259.165mil|Location2.X=2357.716mil|Location1.Y=2615.047mil|Location2.Y=2658.48mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC5-47(1280.882mil,-2363.236mil) on Top Layer [Unplated] And Pad IC5-40(1336mil,-2363.236mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2314.284mil|Location2.X=2357.716mil|Location1.Y=2670.165mil|Location2.Y=2768.716mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2314.284mil|Location2.X=2357.716mil|Location1.Y=2670.165mil|Location2.Y=2768.716mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC5-41(1336mil,-2308.118mil) on Top Layer [Unplated] And Pad IC5-42(1336mil,-2253mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2259.165mil|Location2.X=2357.716mil|Location1.Y=2725.284mil|Location2.Y=2768.716mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2259.165mil|Location2.X=2357.716mil|Location1.Y=2725.284mil|Location2.Y=2768.716mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC5-43(1280.882mil,-2253mil) on Top Layer [Unplated] And Pad IC5-42(1336mil,-2253mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2314.284mil|Location2.X=2389.528mil|Location1.Y=2725.284mil|Location2.Y=3313.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2314.284mil|Location2.X=2389.528mil|Location1.Y=2725.284mil|Location2.Y=3313.528mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC5-42(1336mil,-2253mil) on Top Layer [Unplated] And Pad P14-2(1356mil,-1720mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2204.047mil|Location2.X=2302.598mil|Location1.Y=2725.284mil|Location2.Y=2768.716mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2204.047mil|Location2.X=2302.598mil|Location1.Y=2725.284mil|Location2.Y=2768.716mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC5-44(1225.764mil,-2253mil) on Top Layer [Unplated] And Pad IC5-43(1280.882mil,-2253mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2204.047mil|Location2.X=2247.48mil|Location1.Y=2670.165mil|Location2.Y=2768.716mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2204.047mil|Location2.X=2247.48mil|Location1.Y=2670.165mil|Location2.Y=2768.716mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC5-45(1225.764mil,-2308.118mil) on Top Layer [Unplated] And Pad IC5-44(1225.764mil,-2253mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2204.047mil|Location2.X=2302.598mil|Location1.Y=2615.047mil|Location2.Y=2658.48mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2204.047mil|Location2.X=2302.598mil|Location1.Y=2615.047mil|Location2.Y=2658.48mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad IC5-46(1225.764mil,-2363.236mil) on Top Layer [Unplated] And Pad IC5-47(1280.882mil,-2363.236mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1631.267mil|Location2.X=2345.512mil|Location1.Y=2372.921mil|Location2.Y=4208.252mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1631.267mil|Location2.X=2345.512mil|Location1.Y=2372.921mil|Location2.Y=4208.252mil|Absolute=True">Un-Routed Net Constraint: Net NetIC5_8 Between Pad R20-2(652.984mil,-809.528mil) on Top Layer And Pad IC5-8(1323.795mil,-2593.551mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1160.315mil|Location2.X=2395.512mil|Location1.Y=1896.276mil|Location2.Y=2439.976mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1160.315mil|Location2.X=2395.512mil|Location1.Y=1896.276mil|Location2.Y=2439.976mil|Absolute=True">Un-Routed Net Constraint: Net NetIC5_9 Between Pad LED3-1(184mil,-3078.071mil) on Top Layer And Pad IC5-9(1373.795mil,-2593.551mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3046.205mil|Location2.X=3129.795mil|Location1.Y=2347.787mil|Location2.Y=2704.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3046.205mil|Location2.X=3129.795mil|Location1.Y=2347.787mil|Location2.Y=2704.213mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad IC6-3(2063mil,-2332.268mil) on Top Layer [Unplated] And Pad IC6-7(2113mil,-2615.732mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3046.205mil|Location2.X=3171.252mil|Location1.Y=2631.252mil|Location2.Y=2987.717mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3046.205mil|Location2.X=3171.252mil|Location1.Y=2631.252mil|Location2.Y=2987.717mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad IC6-3(2063mil,-2332.268mil) on Top Layer [Unplated] And Pad R7-2(2153.472mil,-2034mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3096.205mil|Location2.X=3179.795mil|Location1.Y=2347.787mil|Location2.Y=2420.748mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3096.205mil|Location2.X=3179.795mil|Location1.Y=2347.787mil|Location2.Y=2420.748mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad IC6-7(2113mil,-2615.732mil) on Top Layer [Unplated] And Pad IC6-8(2163mil,-2615.732mil) on Top Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3146.205mil|Location2.X=3272.528mil|Location1.Y=1641.473mil|Location2.Y=2420.748mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3146.205mil|Location2.X=3272.528mil|Location1.Y=1641.473mil|Location2.Y=2420.748mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad IC6-8(2163mil,-2615.732mil) on Top Layer [Unplated] And Pad P1-1(2239mil,-3325mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1152.441mil|Location2.X=1393.724mil|Location1.Y=2111.315mil|Location2.Y=2196.716mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1152.441mil|Location2.X=1393.724mil|Location1.Y=2111.315mil|Location2.Y=2196.716mil|Absolute=True">Un-Routed Net Constraint: Net NetLED1_2 Between Pad LED1-2(184mil,-2865mil) on Top Layer [Unplated] And Pad R17-1(375.945mil,-2825mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1160.5mil|Location2.X=1393.724mil|Location1.Y=2255.284mil|Location2.Y=2318mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1160.5mil|Location2.X=1393.724mil|Location1.Y=2255.284mil|Location2.Y=2318mil|Absolute=True">Un-Routed Net Constraint: Net NetLED2_2 Between Pad LED2-2(184mil,-2705.5mil) on Top Layer And Pad R18-1(375.945mil,-2723mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1160.315mil|Location2.X=1393.724mil|Location1.Y=1829.347mil|Location2.Y=2112.716mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1160.315mil|Location2.X=1393.724mil|Location1.Y=1829.347mil|Location2.Y=2112.716mil|Absolute=True">Un-Routed Net Constraint: Net NetLED3_2 Between Pad LED3-2(184mil,-3145mil) on Top Layer And Pad R5-1(375.945mil,-2909mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3398.134mil|Location2.X=4116.528mil|Location1.Y=2940.472mil|Location2.Y=3007.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3398.134mil|Location2.X=4116.528mil|Location1.Y=2940.472mil|Location2.Y=3007.528mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_33 Between Pad R8-1(2415.914mil,-2034mil) on Bottom Layer And Pad P10-3(3083mil,-2026mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3983mil|Location2.X=7328.472mil|Location1.Y=2874mil|Location2.Y=2746.937mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3983mil|Location2.X=7328.472mil|Location1.Y=2874mil|Location2.Y=2746.937mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_33 Between Pad P10-3(3083mil,-2026mil) on Multi-Layer And Track (6228.472mil,-2357mil)(6228.472mil,-2353.063mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3949.472mil|Location2.X=7356.78mil|Location1.Y=2618.284mil|Location2.Y=3007.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3949.472mil|Location2.X=7356.78mil|Location1.Y=2618.284mil|Location2.Y=3007.528mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_36 Between Pad P10-4(2983mil,-2026mil) on Multi-Layer And Pad R16-2(6339mil,-2360mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3669.173mil|Location2.X=3916.528mil|Location1.Y=2603.472mil|Location2.Y=3007.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3669.173mil|Location2.X=3916.528mil|Location1.Y=2603.472mil|Location2.Y=3007.528mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad P4-7(2702.701mil,-2363mil) on Multi-Layer And Pad P10-5(2883mil,-2026mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3499.472mil|Location2.X=3916.528mil|Location1.Y=2940.472mil|Location2.Y=3108.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3499.472mil|Location2.X=3916.528mil|Location1.Y=2940.472mil|Location2.Y=3108.528mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad P9-6(2533mil,-1925mil) on Multi-Layer And Pad P10-5(2883mil,-2026mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3749.472mil|Location2.X=4236.228mil|Location1.Y=2603.472mil|Location2.Y=3007.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3749.472mil|Location2.X=4236.228mil|Location1.Y=2603.472mil|Location2.Y=3007.528mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad P10-6(2783mil,-2026mil) on Multi-Layer And Pad P4-2(3202.701mil,-2363mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3457.189mil|Location2.X=3816.528mil|Location1.Y=2940.472mil|Location2.Y=3007.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3457.189mil|Location2.X=3816.528mil|Location1.Y=2940.472mil|Location2.Y=3007.528mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R8-2(2474.969mil,-2034mil) on Bottom Layer And Pad P10-6(2783mil,-2026mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3135.693mil|Location2.X=3365.528mil|Location1.Y=2821.472mil|Location2.Y=2987.717mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3135.693mil|Location2.X=3365.528mil|Location1.Y=2821.472mil|Location2.Y=2987.717mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R7-2(2153.472mil,-2034mil) on Bottom Layer And Pad P11-1(2332mil,-2145mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3298.472mil|Location2.X=3492.748mil|Location1.Y=2821.472mil|Location2.Y=2987.716mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3298.472mil|Location2.X=3492.748mil|Location1.Y=2821.472mil|Location2.Y=2987.716mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad P11-1(2332mil,-2145mil) on Multi-Layer And Pad R8-2(2474.969mil,-2034mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3098.472mil|Location2.X=3230.307mil|Location1.Y=2821.472mil|Location2.Y=2987.717mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3098.472mil|Location2.X=3230.307mil|Location1.Y=2821.472mil|Location2.Y=2987.717mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_36 Between Pad P11-3(2132mil,-2145mil) on Multi-Layer And Pad R7-1(2212.528mil,-2034mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2998.472mil|Location2.X=3433.693mil|Location1.Y=2821.472mil|Location2.Y=2987.716mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2998.472mil|Location2.X=3433.693mil|Location1.Y=2821.472mil|Location2.Y=2987.716mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_33 Between Pad P11-4(2032mil,-2145mil) on Multi-Layer And Pad R8-1(2415.914mil,-2034mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7313.472mil|Location2.X=7415.835mil|Location1.Y=2618.284mil|Location2.Y=2849.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7313.472mil|Location2.X=7415.835mil|Location1.Y=2618.284mil|Location2.Y=2849.528mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad P12-7(6347mil,-2184mil) on Multi-Layer And Pad R16-1(6398.055mil,-2360mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7213.472mil|Location2.X=7280.528mil|Location1.Y=2782.472mil|Location2.Y=3541.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7213.472mil|Location2.X=7280.528mil|Location1.Y=2782.472mil|Location2.Y=3541.528mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad P12-8(6247mil,-2184mil) on Multi-Layer And Pad P13-1(6247mil,-1492mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4269.173mil|Location2.X=7280.528mil|Location1.Y=2603.472mil|Location2.Y=2849.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4269.173mil|Location2.X=7280.528mil|Location1.Y=2603.472mil|Location2.Y=2849.528mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad P4-1(3302.701mil,-2363mil) on Multi-Layer And Pad P12-8(6247mil,-2184mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7128.472mil|Location2.X=7547mil|Location1.Y=2546.937mil|Location2.Y=3608mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7128.472mil|Location2.X=7547mil|Location1.Y=2546.937mil|Location2.Y=3608mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_33 Between Track (6228.472mil,-2357mil)(6228.472mil,-2353.063mil) on Bottom Layer And Pad P13-3(6447mil,-1492mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7321.221mil|Location2.X=7580.528mil|Location1.Y=2618.284mil|Location2.Y=3541.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7321.221mil|Location2.X=7580.528mil|Location1.Y=2618.284mil|Location2.Y=3541.528mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_36 Between Pad R16-2(6339mil,-2360mil) on Bottom Layer And Pad P13-4(6547mil,-1492mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2422.472mil|Location2.X=3171.252mil|Location1.Y=2944.284mil|Location2.Y=3313.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2422.472mil|Location2.X=3171.252mil|Location1.Y=2944.284mil|Location2.Y=3313.528mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad P14-1(1456mil,-1720mil) on Multi-Layer And Pad R7-2(2153.472mil,-2034mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2122.472mil|Location2.X=3266.528mil|Location1.Y=3041.472mil|Location2.Y=3313.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2122.472mil|Location2.X=3266.528mil|Location1.Y=3041.472mil|Location2.Y=3313.528mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_36 Between Pad P14-4(1156mil,-1720mil) on Multi-Layer And Pad P9-3(2233mil,-1925mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4269.173mil|Location2.X=4336.228mil|Location1.Y=1911.473mil|Location2.Y=2670.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4269.173mil|Location2.X=4336.228mil|Location1.Y=1911.473mil|Location2.Y=2670.528mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad P3-1(3302.701mil,-3055mil) on Multi-Layer And Pad P4-1(3302.701mil,-2363mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3669.173mil|Location2.X=4336.228mil|Location1.Y=2603.472mil|Location2.Y=2670.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3669.173mil|Location2.X=4336.228mil|Location1.Y=2603.472mil|Location2.Y=2670.528mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad P4-7(2702.701mil,-2363mil) on Multi-Layer And Pad P4-1(3302.701mil,-2363mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4169.173mil|Location2.X=7305.307mil|Location1.Y=2603.472mil|Location2.Y=2670.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4169.173mil|Location2.X=7305.307mil|Location1.Y=2603.472mil|Location2.Y=2670.528mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad P4-2(3202.701mil,-2363mil) on Multi-Layer And Pad R15-1(6287.528mil,-2357mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1293.473mil|Location2.X=1544.716mil|Location1.Y=1657.473mil|Location2.Y=1944.834mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1293.473mil|Location2.X=1544.716mil|Location1.Y=1657.473mil|Location2.Y=1944.834mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad P6-1(327mil,-3309mil) on Multi-Layer And Pad R1-1(523mil,-3072.945mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1393.473mil|Location2.X=1460.527mil|Location1.Y=1657.473mil|Location2.Y=2112.716mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1393.473mil|Location2.X=1460.527mil|Location1.Y=1657.473mil|Location2.Y=2112.716mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad P6-2(427mil,-3309mil) on Multi-Layer And Pad R5-2(435mil,-2909mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1493.473mil|Location2.X=1560.527mil|Location1.Y=1657.473mil|Location2.Y=1885.779mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1493.473mil|Location2.X=1560.527mil|Location1.Y=1657.473mil|Location2.Y=1885.779mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_36 Between Pad R1-2(523mil,-3132mil) on Top Layer And Pad P6-3(527mil,-3309mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1519.063mil|Location2.X=1727mil|Location1.Y=1768mil|Location2.Y=1791mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1519.063mil|Location2.X=1727mil|Location1.Y=1768mil|Location2.Y=1791mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_33 Between Track (619.063mil,-3132mil)(623mil,-3132mil) on Top Layer And Pad P6-4(627mil,-3309mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1693.473mil|Location2.X=1760.527mil|Location1.Y=1657.473mil|Location2.Y=1885.78mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1693.473mil|Location2.X=1760.527mil|Location1.Y=1657.473mil|Location2.Y=1885.78mil|Absolute=True">Un-Routed Net Constraint: Net NetP6_5 Between Pad P6-5(727mil,-3309mil) on Multi-Layer And Pad R25-2(727mil,-3132mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1793.473mil|Location2.X=1860.527mil|Location1.Y=1657.473mil|Location2.Y=1885.779mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1793.473mil|Location2.X=1860.527mil|Location1.Y=1657.473mil|Location2.Y=1885.779mil|Absolute=True">Un-Routed Net Constraint: Net NetP6_6 Between Pad R2-2(823mil,-3132mil) on Top Layer And Pad P6-6(827mil,-3309mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1893.473mil|Location2.X=1960.527mil|Location1.Y=1657.473mil|Location2.Y=1885.78mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1893.473mil|Location2.X=1960.527mil|Location1.Y=1657.473mil|Location2.Y=1885.78mil|Absolute=True">Un-Routed Net Constraint: Net NetP6_7 Between Pad R23-2(923mil,-3132mil) on Top Layer And Pad P6-7(927mil,-3309mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2285.284mil|Location2.X=2997.528mil|Location1.Y=4653.276mil|Location2.Y=4723.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2285.284mil|Location2.X=2997.528mil|Location1.Y=4653.276mil|Location2.Y=4723.528mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R21-1(1307mil,-328.945mil) on Top Layer And Pad P7-7(1964mil,-310mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1863.456mil|Location2.X=2997.528mil|Location1.Y=4756.472mil|Location2.Y=4864.953mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1863.456mil|Location2.X=2997.528mil|Location1.Y=4756.472mil|Location2.Y=4864.953mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad S3-2(896.984mil,-168.575mil) on Multi-Layer And Pad P7-8(1964mil,-210mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3194.748mil|Location2.X=3266.528mil|Location1.Y=2944.284mil|Location2.Y=3108.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3194.748mil|Location2.X=3266.528mil|Location1.Y=2944.284mil|Location2.Y=3108.528mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_36 Between Pad R7-1(2212.528mil,-2034mil) on Bottom Layer And Pad P9-3(2233mil,-1925mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3299.472mil|Location2.X=3433.693mil|Location1.Y=2944.284mil|Location2.Y=3108.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3299.472mil|Location2.X=3433.693mil|Location1.Y=2944.284mil|Location2.Y=3108.528mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_33 Between Pad P9-4(2333mil,-1925mil) on Multi-Layer And Pad R8-1(2415.914mil,-2034mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3399.472mil|Location2.X=3492.748mil|Location1.Y=2944.284mil|Location2.Y=3108.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3399.472mil|Location2.X=3492.748mil|Location1.Y=2944.284mil|Location2.Y=3108.528mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad P9-5(2433mil,-1925mil) on Multi-Layer And Pad R8-2(2474.969mil,-2034mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4052.276mil|Location2.X=4234.307mil|Location1.Y=4169.283mil|Location2.Y=4256.717mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4052.276mil|Location2.X=4234.307mil|Location1.Y=4169.283mil|Location2.Y=4256.717mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R10-1(3070.055mil,-765mil) on Top Layer And Pad R4-1(3216.528mil,-809mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3156.276mil|Location2.X=4028.78mil|Location1.Y=4213.283mil|Location2.Y=4403.716mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3156.276mil|Location2.X=4028.78mil|Location1.Y=4213.283mil|Location2.Y=4403.716mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_36 Between Pad R12-1(2174.055mil,-618mil) on Top Layer And Pad R10-2(3011mil,-765mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1501.283mil|Location2.X=1644.716mil|Location1.Y=1909.275mil|Location2.Y=1944.835mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1501.283mil|Location2.X=1644.716mil|Location1.Y=1909.275mil|Location2.Y=1944.835mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R1-1(523mil,-3072.945mil) on Top Layer And Pad R24-1(623mil,-3072.945mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4198.748mil|Location2.X=4363.835mil|Location1.Y=4169.283mil|Location2.Y=4267.717mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4198.748mil|Location2.X=4363.835mil|Location1.Y=4169.283mil|Location2.Y=4267.717mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R4-1(3216.528mil,-809mil) on Top Layer And Pad R11-1(3346.055mil,-754mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3097.22mil|Location2.X=3606.307mil|Location1.Y=4048.283mil|Location2.Y=4403.716mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3097.22mil|Location2.X=3606.307mil|Location1.Y=4048.283mil|Location2.Y=4403.716mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R12-2(2115mil,-618mil) on Top Layer And Pad R3-1(2588.528mil,-930mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3097.22mil|Location2.X=3132.78mil|Location1.Y=4360.283mil|Location2.Y=4511.717mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3097.22mil|Location2.X=3132.78mil|Location1.Y=4360.283mil|Location2.Y=4511.717mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R12-2(2115mil,-618mil) on Top Layer And Pad R9-1(2115mil,-510mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3156.276mil|Location2.X=3191.835mil|Location1.Y=4468.284mil|Location2.Y=4614.717mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3156.276mil|Location2.X=3191.835mil|Location1.Y=4468.284mil|Location2.Y=4614.717mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_33 Between Pad R13-1(2174.055mil,-407mil) on Top Layer And Pad R9-2(2174.055mil,-510mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3097.22mil|Location2.X=3132.78mil|Location1.Y=4468.284mil|Location2.Y=4614.717mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3097.22mil|Location2.X=3132.78mil|Location1.Y=4468.284mil|Location2.Y=4614.717mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R13-2(2115mil,-407mil) on Top Layer And Pad R9-1(2115mil,-510mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7269.748mil|Location2.X=7415.835mil|Location1.Y=2618.284mil|Location2.Y=2664.717mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7269.748mil|Location2.X=7415.835mil|Location1.Y=2618.284mil|Location2.Y=2664.717mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R15-1(6287.528mil,-2357mil) on Bottom Layer And Pad R16-1(6398.055mil,-2360mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1417.22mil|Location2.X=1452.78mil|Location1.Y=2153.284mil|Location2.Y=2298.717mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1417.22mil|Location2.X=1452.78mil|Location1.Y=2153.284mil|Location2.Y=2298.717mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad R17-2(435mil,-2825mil) on Top Layer And Pad R18-2(435mil,-2723mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1417.22mil|Location2.X=1452.78mil|Location1.Y=2069.284mil|Location2.Y=2196.716mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1417.22mil|Location2.X=1452.78mil|Location1.Y=2069.284mil|Location2.Y=2196.716mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad R5-2(435mil,-2909mil) on Top Layer And Pad R17-2(435mil,-2825mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2285.284mil|Location2.X=2332.716mil|Location1.Y=4413.276mil|Location2.Y=4688.835mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2285.284mil|Location2.X=2332.716mil|Location1.Y=4413.276mil|Location2.Y=4688.835mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R21-1(1307mil,-328.945mil) on Top Layer And Pad R19-1(1311mil,-568.945mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2163.456mil|Location2.X=2332.716mil|Location1.Y=4354.221mil|Location2.Y=4430.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2163.456mil|Location2.X=2332.716mil|Location1.Y=4354.221mil|Location2.Y=4430.528mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_8 Between Pad S1-1(1196.984mil,-603mil) on Multi-Layer And Pad R19-2(1311mil,-628mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1631.267mil|Location2.X=1674.7mil|Location1.Y=4231.748mil|Location2.Y=4590.15mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1631.267mil|Location2.X=1674.7mil|Location1.Y=4231.748mil|Location2.Y=4590.15mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad R20-1(652.984mil,-750.472mil) on Top Layer And Pad R22-1(652.984mil,-427.63mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1631.267mil|Location2.X=1930.511mil|Location1.Y=4231.748mil|Location2.Y=4430.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1631.267mil|Location2.X=1930.511mil|Location1.Y=4231.748mil|Location2.Y=4430.528mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad R20-1(652.984mil,-750.472mil) on Top Layer And Pad S1-2(896.984mil,-603mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1513.456mil|Location2.X=1674.7mil|Location1.Y=4163.472mil|Location2.Y=4230.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1513.456mil|Location2.X=1674.7mil|Location1.Y=4163.472mil|Location2.Y=4230.528mil|Absolute=True">Un-Routed Net Constraint: Net NetIC5_8 Between Pad S2-2(546.984mil,-803mil) on Multi-Layer And Pad R20-2(652.984mil,-809.528mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1801.283mil|Location2.X=1944.716mil|Location1.Y=1909.275mil|Location2.Y=1944.835mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1801.283mil|Location2.X=1944.716mil|Location1.Y=1909.275mil|Location2.Y=1944.835mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R2-1(823mil,-3072.945mil) on Top Layer And Pad R23-1(923mil,-3072.945mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.284mil|Location2.X=1844.716mil|Location1.Y=1909.275mil|Location2.Y=1944.835mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.284mil|Location2.X=1844.716mil|Location1.Y=1909.275mil|Location2.Y=1944.835mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R25-1(727mil,-3072.945mil) on Top Layer And Pad R2-1(823mil,-3072.945mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1213.456mil|Location2.X=2328.716mil|Location1.Y=4597.898mil|Location2.Y=4688.835mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1213.456mil|Location2.X=2328.716mil|Location1.Y=4597.898mil|Location2.Y=4688.835mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad S4-1(246.984mil,-368.575mil) on Multi-Layer And Pad R21-1(1307mil,-328.945mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2163.456mil|Location2.X=2328.716mil|Location1.Y=4594.221mil|Location2.Y=4864.953mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2163.456mil|Location2.X=2328.716mil|Location1.Y=4594.221mil|Location2.Y=4864.953mil|Absolute=True">Un-Routed Net Constraint: Net NetIC1_24 Between Pad S3-1(1196.984mil,-168.575mil) on Multi-Layer And Pad R21-2(1307mil,-388mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1513.456mil|Location2.X=1674.7mil|Location1.Y=4597.898mil|Location2.Y=4664.953mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1513.456mil|Location2.X=1674.7mil|Location1.Y=4597.898mil|Location2.Y=4664.953mil|Absolute=True">Un-Routed Net Constraint: Net NetIC5_24 Between Pad S4-2(546.984mil,-368.575mil) on Multi-Layer And Pad R22-2(652.984mil,-368.575mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1901.284mil|Location2.X=2027.252mil|Location1.Y=1909.276mil|Location2.Y=2303.717mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1901.284mil|Location2.X=2027.252mil|Location1.Y=1909.276mil|Location2.Y=2303.717mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R23-1(923mil,-3072.945mil) on Top Layer And Pad R6-1(1009.472mil,-2718mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1601.283mil|Location2.X=1748.716mil|Location1.Y=1909.276mil|Location2.Y=1944.835mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1601.283mil|Location2.X=1748.716mil|Location1.Y=1909.276mil|Location2.Y=1944.835mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R24-1(623mil,-3072.945mil) on Top Layer And Pad R25-1(727mil,-3072.945mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1863.456mil|Location2.X=1930.511mil|Location1.Y=4363.472mil|Location2.Y=4864.953mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1863.456mil|Location2.X=1930.511mil|Location1.Y=4363.472mil|Location2.Y=4864.953mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad S1-2(896.984mil,-603mil) on Multi-Layer And Pad S3-2(896.984mil,-168.575mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1213.456mil|Location2.X=1280.511mil|Location1.Y=4163.472mil|Location2.Y=4664.953mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1213.456mil|Location2.X=1280.511mil|Location1.Y=4163.472mil|Location2.Y=4664.953mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad S2-1(246.984mil,-803mil) on Multi-Layer And Pad S4-1(246.984mil,-368.575mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
