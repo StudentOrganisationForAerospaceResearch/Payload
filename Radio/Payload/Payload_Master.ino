@@ -177,6 +177,7 @@ void setup()
     myGNSS.setPortOutput(COM_PORT_SPI, COM_TYPE_UBX); //Set the SPI port to output UBX only (turn off NMEA noise)
     myGNSS.saveConfigSelective(VAL_CFG_SUBSEC_IOPORT); //Save (only) the communications port settings to flash and BBR
     myGNSS.setAutoPVT(true); //Automatically updates PVT
+    myGNSS.setNavigationFrequency(10); // doesn't actually send at 10 times per second but it will send as fast as it can (about 7-8 times per second)
     flash(500);
 
     //conneting to radio
