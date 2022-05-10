@@ -241,6 +241,6 @@ void loop(){
 //  Serial.print(",");
   Serial.println();
  
-  delay(500);    // delay between reading
+  delay(50);    // delay between reading
   
 }
