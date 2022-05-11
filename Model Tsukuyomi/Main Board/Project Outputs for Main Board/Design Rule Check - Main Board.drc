@@ -1,7 +1,7 @@
 Protel Design System Design Rule Check
-PCB File : C:\Users\Nasih Nazeem\Documents\GitHub\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc
-Date     : 2022-05-10
-Time     : 2:28:11 PM
+PCB File : H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc
+Date     : 2022-05-11
+Time     : 1:42:28 AM
 
 Processing Rule : Clearance Constraint (Gap=6mil) (All),(All)
 Rule Violations :0
@@ -22,7 +22,12 @@ Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Co
 Rule Violations :0
 
 Processing Rule : Hole Size Constraint (Min=1mil) (Max=100mil) (All)
-Rule Violations :0
+   Violation between Hole Size Constraint: (512mil > 100mil) Pad Free-3(381mil,-2230mil) on Multi-Layer Actual Hole Size = 512mil
+   Violation between Hole Size Constraint: (200mil > 100mil) Pad Free-4(381mil,-1274mil) on Multi-Layer Actual Hole Size = 200mil
+   Violation between Hole Size Constraint: (200mil > 100mil) Pad Free-5(3199mil,-1718mil) on Multi-Layer Actual Hole Size = 200mil
+   Violation between Hole Size Constraint: (200mil > 100mil) Pad Free-7(1600mil,-237mil) on Multi-Layer Actual Hole Size = 200mil
+   Violation between Hole Size Constraint: (200mil > 100mil) Pad Free-8(1600mil,-3200mil) on Multi-Layer Actual Hole Size = 200mil
+Rule Violations :5
 
 Processing Rule : Hole To Hole Clearance (Gap=10mil) (All),(All)
 Rule Violations :0
@@ -44,6 +49,6 @@ Processing Rule : Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (
 Rule Violations :0
 
 
-Violations Detected : 1
+Violations Detected : 6
 Waived Violations : 0
-Time Elapsed        : 00:00:02
+Time Elapsed        : 00:00:01
