@@ -1,0 +1,2 @@
+Change Component Footprint: Designator=LED2 Old Footprint=LED_LTST-C170GKT_LTO New Footprint=LEDC2012X120N
+Added Room: Name=ModelT_MainBoard

@@ -1,0 +1,48 @@
+Removed Pin From Net: NetName=NetIC5_14 Pin=LED1-1
+Removed Pin From Net: NetName=NetIC1_9 Pin=LED2-1
+Removed Pin From Net: NetName=NetIC5_9 Pin=LED3-1
+Change Component Footprint: Designator=LED3 Old Footprint=0603 New Footprint=LED_LTST-C170GKT_LTO
+Change Footprint: Footprint Not Found LEDC2012X120N
+Change Component Footprint: Designator=LED1 Old Footprint=LEDC2012X120N New Footprint=0603
+Change Component Comment : Designator=LED1 Old Comment=LTST-C170EKT New Comment=LTST-C193TBKT-5A
+Change Component Comment : Designator=LED2 Old Comment=LTST-C170GKT New Comment=LTST-C170EKT
+Change Component Comment : Designator=LED3 Old Comment=LTST-C193TBKT-5A New Comment=LTST-C170GKT
+Change component parameters: Designator = "LED1" ("LED1"); Footprint = "LEDC2012X120N"; UniqueID = "\AWTUWUXC" ("\AWTUWUXC")
+Change component parameters (AddParameter): Name = "Digi-Key_Part_Number"; Value = "160-1827-1-ND"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Digi-Key_Purchase_URL"; Value = "https://www.digikey.com/product-detail/en/lite-on-inc/LTST-C193TBKT-5A/160-1827-1-ND/2355044?utm_source=snapeda&utm_medium=aggregator&utm_campaign=symbol"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "MF"; Value = "Lite-On Inc."; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "MP"; Value = "LTST-C193TBKT-5A"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Package"; Value = "0603 Lite-On"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/LTST-C193TBKT-5A/Lite-On%20Inc./view-part/350303/?ref=snap"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "LED2" ("LED2"); Footprint = "LED_LTST-C170GKT_LTO"; UniqueID = "\GSVWOKRO" ("\GSVWOKRO")
+Change component parameters (AddParameter): Name = "Arrow Part Number"; Value = "LTST-C170EKT"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Arrow Price/Stock"; Value = "https://www.arrow.com/en/products/ltst-c170ekt/lite-on-technology"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Datasheet Link"; Value = "https://media.digikey.com/pdf/Data%20Sheets/Lite-On%20PDFs/LTST-C170EKT.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Height"; Value = "1.2mm"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer_Name"; Value = "Lite-On"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer_Part_Number"; Value = "LTST-C170EKT"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser Part Number"; Value = "859-LTST-C170EKT"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/Lite-On/LTST-C170EKT?qs=0hBTvMLoVZ04yIRvO1DUlw%3D%3D"; VariantName = "[No Variations]"
+Change component parameters: Designator = "LED3" ("LED3"); Footprint = "0603"; UniqueID = "\HAYSTQBD" ("\HAYSTQBD")
+Change component parameters (AddParameter): Name = "Copyright"; Value = "Copyright (C) 2022 Ultra Librarian. All rights reserved."; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Digi-Key_Part_Number_1"; Value = "160-1179-2-ND"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Digi-Key_Part_Number_2"; Value = "160-1179-1-ND"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Digi-Key_Part_Number_3"; Value = "160-1179-6-ND"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer_Part_Number"; Value = "LTST-C170GKT"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mfr_Name"; Value = "LITE-ON"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "RefDes"; Value = "RefDes"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Type"; Value = "DEV"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetIC5_9 Pin=LED1-2
+Added Pin To Net: NetName=NetIC5_14 Pin=LED2-2
+Added Pin To Net: NetName=NetIC1_9 Pin=LED3-2
+Added Pin To Net: NetName=NetLED1_1 Pin=LED1-1
+Added Pin To Net: NetName=NetLED1_1 Pin=R5-1
+Added Net: Name=NetLED1_1
+Added Pin To Net: NetName=NetLED2_1 Pin=LED2-1
+Added Pin To Net: NetName=NetLED2_1 Pin=R17-1
+Added Net: Name=NetLED2_1
+Added Pin To Net: NetName=NetLED3_1 Pin=LED3-1
+Added Pin To Net: NetName=NetLED3_1 Pin=R18-1
+Added Net: Name=NetLED3_1
+Added Room: Name=ModelT_MainBoard

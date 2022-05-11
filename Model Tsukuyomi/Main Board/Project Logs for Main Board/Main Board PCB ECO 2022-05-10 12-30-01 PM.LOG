@@ -1,0 +1,22 @@
+Removed Pin From Net: NetName=NetIC1_36 Pin=P9-3
+Removed Pin From Net: NetName=NetIC1_33 Pin=P9-4
+Removed Pin From Net: NetName=VCC Pin=P9-5
+Removed Pin From Net: NetName=GND Pin=P9-6
+Removed Pin From Net: NetName=VCC Pin=P11-1
+Removed Pin From Net: NetName=GND Pin=P11-2
+Removed Pin From Net: NetName=NetIC1_36 Pin=P11-3
+Removed Pin From Net: NetName=NetIC1_33 Pin=P11-4
+Removed Member From Class: ClassName=ModelT_MainBoard Member=P11
+Add Component: Footprint Not Found JST_SM04B-SRSS-TB(LF)(SN)
+Add Component: Footprint Not Found JST_SM04B-SRSS-TB(LF)(SN)
+Add Pin To Net: Unknown Pin: Pin J3-1
+Add Pin To Net: Unknown Pin: Pin J3-2
+Add Pin To Net: Unknown Pin: Pin J3-3
+Add Pin To Net: Unknown Pin: Pin J3-4
+Add Pin To Net: Unknown Pin: Pin J-1
+Add Pin To Net: Unknown Pin: Pin J-2
+Add Pin To Net: Unknown Pin: Pin J-3
+Add Pin To Net: Unknown Pin: Pin J-4
+Add Class Member: Failed to add class member : Component J3 SM04B-SRSS-TB(LF)(SN)
+Add Class Member: Failed to add class member : Component J SM04B-SRSS-TB(LF)(SN)
+Added Room: Name=ModelT_MainBoard
