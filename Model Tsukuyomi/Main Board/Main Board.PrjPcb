@@ -48,74 +48,6 @@ PrefsVaultGUID=
 PrefsRevisionGUID=
 
 [Document1]
-DocumentPath=..\..\..\..\..\OneDrive - University of Calgary\Documents\AltiumLL\SamacSys.PcbLib
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=MPRJBCLL
-
-[Document2]
-DocumentPath=..\..\..\..\..\OneDrive - University of Calgary\Documents\AltiumLL\SamacSys.SchLib
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=NGLTGAHM
-
-[Document3]
-DocumentPath=..\..\..\..\..\AppData\Local\Temp\Rar$DRa8608.23314\SM04B-SRSS-TB_LF__SN_\SnapEDAsch.SchLib
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=JVHTISAB
-
-[Document4]
-DocumentPath=..\..\..\..\..\AppData\Local\Temp\Rar$DRa8608.23314\SM04B-SRSS-TB_LF__SN_\SnapEDApcb.PcbLib
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=GMIVLSFD
-
-[Document5]
 DocumentPath=LTST-C193TBKT-5A\LTST-C193TBKT-5A\LTST-C193TBKT-5A.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -132,7 +64,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=PGVDARAQ
 
-[Document6]
+[Document2]
 DocumentPath=LTST-C193TBKT-5A\LTST-C193TBKT-5A\LTST-C193TBKT-5A.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -149,7 +81,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=GMIVLSFD
 
-[Document7]
+[Document3]
 DocumentPath=ul_LTST-C170GKT\AltiumDesigner\2022-05-04_16-51-19\LTST-C170GKT.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -166,7 +98,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=EKQNQZSM
 
-[Document8]
+[Document4]
 DocumentPath=ul_LTST-C170GKT\AltiumDesigner\2022-05-04_16-51-19\LTST-C170GKT.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -183,7 +115,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=QAIMEEXU
 
-[Document9]
+[Document5]
 DocumentPath=ModelT_MainBoard.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -200,7 +132,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=DOOIUOGR
 
-[Document10]
+[Document6]
 DocumentPath=KSA0M411LFTR.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -217,7 +149,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=XNISGNGO
 
-[Document11]
+[Document7]
 DocumentPath=KSA0M411LFTR.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -234,7 +166,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=LQQHYXCW
 
-[Document12]
+[Document8]
 DocumentPath=Main Board.OutJob
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -251,7 +183,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document13]
+[Document9]
 DocumentPath=Main Board.PcbDoc
 AnnotationEnabled=1
 AnnotateStartValue=1

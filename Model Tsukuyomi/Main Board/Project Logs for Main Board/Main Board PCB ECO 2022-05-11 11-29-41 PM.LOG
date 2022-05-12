@@ -1,0 +1,15 @@
+Change Component Footprint: Designator=P1 Old Footprint=RHDR2W80P0X254_1X2_558X254X850P New Footprint=HDR1X2
+Change Component Footprint: Designator=P11 Old Footprint=RHDR4W80P0X254_1X4_1066X254X850P New Footprint=HDR1X4
+Change Component Footprint: Designator=P14 Old Footprint=RHDR5W75P0X254_1X5_1320X254X850P New Footprint=HDR1X5
+Change Component Footprint: Designator=P2 Old Footprint=RHDR6W80P0X254_1X6_1574X254X870P New Footprint=HDR1X6
+Change Component Footprint: Designator=P9 Old Footprint=RHDR6W80P0X254_1X6_1574X254X870P New Footprint=HDR1X6
+Change Component Footprint: Designator=P10 Old Footprint=RHDR6W80P0X254_1X6_1574X254X870P New Footprint=HDR1X6
+Change Component Footprint: Designator=P17 Old Footprint=RHDR6W80P0X254_1X6_1574X254X870P New Footprint=HDR1X6
+Change Component Footprint: Designator=P3 Old Footprint=RHDR7W76P0X254_1X7_1778X356X864P New Footprint=HDR1X7
+Change Component Footprint: Designator=P4 Old Footprint=RHDR7W76P0X254_1X7_1778X356X864P New Footprint=HDR1X7
+Change Component Footprint: Designator=P15 Old Footprint=RHDR7W76P0X254_1X7_1778X356X864P New Footprint=HDR1X7
+Change Component Footprint: Designator=P5 Old Footprint=RHDR8W80P0X254_1X8_2082X254X850P New Footprint=HDR1X8
+Change Component Footprint: Designator=P7 Old Footprint=RHDR8W80P0X254_1X8_2082X254X850P New Footprint=HDR1X8
+Change Component Footprint: Designator=P8 Old Footprint=RHDR8W80P0X254_1X8_2082X254X850P New Footprint=HDR1X8
+Change Component Footprint: Designator=P6 Old Footprint=RHDR9W79P0X254_1X9_2337X241X851P New Footprint=HDR1X9
+Added Room: Name=ModelT_MainBoard

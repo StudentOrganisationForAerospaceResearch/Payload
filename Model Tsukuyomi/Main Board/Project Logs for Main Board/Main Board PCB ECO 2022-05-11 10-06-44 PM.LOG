@@ -1,0 +1,19 @@
+Removed Pin From Net: NetName=VCC Pin=R2-1
+Removed Pin From Net: NetName=NetIC1_8 Pin=R19-2
+Removed Pin From Net: NetName=VCC Pin=R23-1
+Removed Pin From Net: NetName=VCC Pin=R25-1
+Removed Pin From Net: NetName=NetIC1_8 Pin=S1-1
+Removed Member From Class: ClassName=ModelT_MainBoard Member=R2
+Removed Member From Class: ClassName=ModelT_MainBoard Member=R23
+Removed Member From Class: ClassName=ModelT_MainBoard Member=R25
+Added Pin To Net: NetName=NetIC1_3 Pin=R19-2
+Added Pin To Net: NetName=NetIC1_8 Pin=R20-2
+Added Pin To Net: NetName=NetIC5_3 Pin=R21-2
+Added Pin To Net: NetName=NetIC1_3 Pin=S1-1
+Added Pin To Net: NetName=NetIC1_8 Pin=S2-2
+Added Pin To Net: NetName=NetIC5_3 Pin=S3-1
+Added Pin To Net: NetName=NetIC1_26 Pin=IC1-26
+Added Pin To Net: NetName=NetIC1_26 Pin=R22-2
+Added Pin To Net: NetName=NetIC1_26 Pin=S4-2
+Added Net: Name=NetIC1_26
+Added Room: Name=ModelT_MainBoard
