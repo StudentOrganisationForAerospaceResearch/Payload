@@ -1,0 +1,33 @@
+Removed Pin From Net: NetName=VCC Pin=P15-1
+Removed Pin From Net: NetName=GND Pin=P15-2
+Removed Pin From Net: NetName=NetIC1_36 Pin=P15-3
+Removed Pin From Net: NetName=NetIC1_33 Pin=P15-4
+Removed Member From Class: ClassName=ModelT_MainBoard Member=P15
+Change Component Footprint: Designator=P1 Old Footprint=HDR1X2 New Footprint=RHDR2W80P0X254_1X2_558X254X850P
+Change Component Footprint: Designator=P11 Old Footprint=HDR1X4 New Footprint=RHDR4W80P0X254_1X4_1066X254X850P
+Change Component Footprint: Designator=P14 Old Footprint=HDR1X5 New Footprint=RHDR5W75P0X254_1X5_1320X254X850P
+Change Component Footprint: Designator=P2 Old Footprint=HDR1X6 New Footprint=RHDR6W80P0X254_1X6_1574X254X870P
+Change Component Footprint: Designator=P9 Old Footprint=HDR1X6 New Footprint=RHDR6W80P0X254_1X6_1574X254X870P
+Change Component Footprint: Designator=P10 Old Footprint=HDR1X6 New Footprint=RHDR6W80P0X254_1X6_1574X254X870P
+Change Component Footprint: Designator=P17 Old Footprint=HDR1X6 New Footprint=RHDR6W80P0X254_1X6_1574X254X870P
+Change Component Footprint: Designator=P3 Old Footprint=HDR1X7 New Footprint=RHDR7W76P0X254_1X7_1778X356X864P
+Change Component Footprint: Designator=P4 Old Footprint=HDR1X7 New Footprint=RHDR7W76P0X254_1X7_1778X356X864P
+Change Component Footprint: Designator=P5 Old Footprint=HDR1X8 New Footprint=RHDR8W80P0X254_1X8_2082X254X850P
+Change Component Footprint: Designator=P7 Old Footprint=HDR1X8 New Footprint=RHDR8W80P0X254_1X8_2082X254X850P
+Change Component Footprint: Designator=P8 Old Footprint=HDR1X8 New Footprint=RHDR8W80P0X254_1X8_2082X254X850P
+Change Component Footprint: Designator=P6 Old Footprint=HDR1X9 New Footprint=RHDR9W79P0X254_1X9_2337X241X851P
+Added Component: Designator=J4(RHDR7W76P0X254_1X7_1778X356X864P)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = "5-534237-5"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = "https://www.arrow.com/en/products/5-534237-5/te-connectivity"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=534237&DocType=Customer+Drawing&DocLang=English"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "8.64mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "TE Connectivity"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "5-534237-5"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "571-5-534237-5"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/TE-Connectivity/5-534237-5?qs=GYgf5PdsjzmjeTI%2Fz24JQA%3D%3D"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=VCC Pin=J4-1
+Added Pin To Net: NetName=GND Pin=J4-2
+Added Pin To Net: NetName=NetIC1_36 Pin=J4-3
+Added Pin To Net: NetName=NetIC1_33 Pin=J4-4
+Added Member To Class: ClassName=ModelT_MainBoard Member=Component J4 5-534237-5
+Added Room: Name=ModelT_MainBoard

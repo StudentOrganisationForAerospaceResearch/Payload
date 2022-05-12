@@ -1,0 +1,67 @@
+Removed Pin From Net: NetName=VCC Pin=R1-1
+Removed Pin From Net: NetName=NetIC1_36 Pin=R1-2
+Removed Pin From Net: NetName=NetIC1_36 Pin=R7-1
+Removed Pin From Net: NetName=NetIC1_33 Pin=R8-1
+Removed Pin From Net: NetName=VCC Pin=R8-2
+Removed Pin From Net: NetName=VCC Pin=R10-1
+Removed Pin From Net: NetName=NetIC1_36 Pin=R10-2
+Removed Pin From Net: NetName=VCC Pin=R11-1
+Removed Pin From Net: NetName=NetIC1_33 Pin=R11-2
+Removed Pin From Net: NetName=NetIC1_36 Pin=R12-1
+Removed Pin From Net: NetName=VCC Pin=R12-2
+Removed Pin From Net: NetName=NetIC1_33 Pin=R13-1
+Removed Pin From Net: NetName=VCC Pin=R13-2
+Removed Pin From Net: NetName=VCC Pin=R24-1
+Removed Pin From Net: NetName=NetIC1_33 Pin=R24-2
+Removed Member From Class: ClassName=ModelT_MainBoard Member=R8
+Removed Member From Class: ClassName=ModelT_MainBoard Member=R10
+Removed Member From Class: ClassName=ModelT_MainBoard Member=R11
+Removed Member From Class: ClassName=ModelT_MainBoard Member=R12
+Removed Member From Class: ClassName=ModelT_MainBoard Member=R13
+Removed Member From Class: ClassName=ModelT_MainBoard Member=R24
+Added Component: Designator=P2(HDR1X2)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Component: Designator=P9(HDR1X2)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Component: Designator=P11(HDR1X4)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetIC1_36 Pin=R1-1
+Added Pin To Net: NetName=VCC Pin=R1-2
+Added Pin To Net: NetName=NetIC1_33 Pin=R7-1
+Added Pin To Net: NetName=NetIC1_14 Pin=IC1-14
+Added Pin To Net: NetName=NetIC1_14 Pin=P7-5
+Added Net: Name=NetIC1_14
+Added Pin To Net: NetName=NetIC1_34 Pin=IC1-34
+Added Pin To Net: NetName=NetIC1_34 Pin=P2-1
+Added Net: Name=NetIC1_34
+Added Pin To Net: NetName=NetIC1_35 Pin=IC1-35
+Added Pin To Net: NetName=NetIC1_35 Pin=P2-2
+Added Net: Name=NetIC1_35
+Added Pin To Net: NetName=NetIC5_4 Pin=IC5-4
+Added Pin To Net: NetName=NetIC5_4 Pin=P11-1
+Added Net: Name=NetIC5_4
+Added Pin To Net: NetName=NetIC5_5 Pin=IC5-5
+Added Pin To Net: NetName=NetIC5_5 Pin=P11-2
+Added Net: Name=NetIC5_5
+Added Pin To Net: NetName=NetIC5_6 Pin=IC5-6
+Added Pin To Net: NetName=NetIC5_6 Pin=P11-3
+Added Net: Name=NetIC5_6
+Added Pin To Net: NetName=NetIC5_7 Pin=IC5-7
+Added Pin To Net: NetName=NetIC5_7 Pin=P11-4
+Added Net: Name=NetIC5_7
+Added Pin To Net: NetName=NetIC5_34 Pin=IC5-34
+Added Pin To Net: NetName=NetIC5_34 Pin=P9-1
+Added Net: Name=NetIC5_34
+Added Pin To Net: NetName=NetIC5_35 Pin=IC5-35
+Added Pin To Net: NetName=NetIC5_35 Pin=P9-2
+Added Net: Name=NetIC5_35
+Added Member To Class: ClassName=ModelT_MainBoard Member=Component P2 Header 2
+Added Member To Class: ClassName=ModelT_MainBoard Member=Component P9 Header 2
+Added Member To Class: ClassName=ModelT_MainBoard Member=Component P11 Header 4
+Added Room: Name=ModelT_MainBoard

@@ -1,0 +1,36 @@
+Removed Pin From Net: NetName=GND Pin=D2-1
+Removed Member From Class: ClassName=Battery Board Main Member=D2
+Added Component: Designator=CR1(SOD123_DIO)
+Add component (AddParameter): Name = "Copyright"; Value = "Copyright (C) 2022 Ultra Librarian. All rights reserved."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Digi-Key_Part_Number_1"; Value = "BZT52C3V9-FDICT-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Digi-Key_Part_Number_2"; Value = "BZT52C3V9-FDIDKR-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Digi-Key_Part_Number_3"; Value = "BZT52C3V9-FDITR-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "BZT52C3V9-7-F"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mfr_Name"; Value = "Diodes Inc"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefDes"; Value = "RefDes"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Type"; Value = "DEV"; VariantName = "[No Variations]"
+Added Component: Designator=CR2(DO-214AC_VIS)
+Add component (AddParameter): Name = "Copyright"; Value = "Copyright (C) 2022 Ultra Librarian. All rights reserved."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Digi-Key_Part_Number_1"; Value = "BYS10-25-E3/GICT-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Digi-Key_Part_Number_2"; Value = "BYS10-25-E3/GIDKR-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Digi-Key_Part_Number_3"; Value = "BYS10-25-E3/GITR-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "BYS10-25-E3/TR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mfr_Name"; Value = "Vishay"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RefDes"; Value = "RefDes"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Type"; Value = "DEV"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=CR1-2
+Added Pin To Net: NetName=NetCR1_1 Pin=CR1-1
+Added Pin To Net: NetName=NetCR1_1 Pin=R17-1
+Added Pin To Net: NetName=NetCR1_1 Pin=R19-2
+Added Net: Name=NetCR1_1
+Added Pin To Net: NetName=NetCR2_1 Pin=CR2-1
+Added Pin To Net: NetName=NetCR2_1 Pin=S1-2
+Added Net: Name=NetCR2_1
+Added Pin To Net: NetName=NetCR2_2 Pin=CR2-2
+Added Pin To Net: NetName=NetCR2_2 Pin=U4-1
+Added Pin To Net: NetName=NetCR2_2 Pin=U4-2
+Added Net: Name=NetCR2_2
+Added Member To Class: ClassName=Battery Board Main Member=Component CR1 BZT52C3V9-7-F
+Added Member To Class: ClassName=Battery Board Main Member=Component CR2 BYS10-25-E3/TR
+Added Member To Class: ClassName=Battery Board Main Member=Component U4 BK-18650-PC8
+Added Room: Name=Battery Board Main
