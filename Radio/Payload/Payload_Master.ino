@@ -71,8 +71,8 @@ SPIClass SPI2(HSPI); //setting up HSPI to work on ESP32 in conjuction with VSPI
 //most Pins are already defined in the library
 uint8_t cs_pin = 15; //GPIO pin 15 has been selected for chip select the GPS
 const int led_pin = 33; //GPIO pin 33 connected to LED 
-const int data_log_button = 32; //GPIO pin 32 connected to the data log button, it starts and ends datalogging
-const int erase_flash_chip_button = 34; //GPIO pin 34 connected to erase flash chip button
+const int data_log_button = 4; //GPIO pin 4 connected to the data log button, it starts and ends datalogging
+const int erase_flash_chip_button = 32; //GPIO pin 32 connected to erase flash chip button
 
 //Defining Library functions to be called\\---------------------------------------------------------------------------------------------------
 SFE_UBLOX_GNSS myGNSS; //Create the library class instance called myGNSS
@@ -177,7 +177,6 @@ void setup()
     myGNSS.setPortOutput(COM_PORT_SPI, COM_TYPE_UBX); //Set the SPI port to output UBX only (turn off NMEA noise)
     myGNSS.saveConfigSelective(VAL_CFG_SUBSEC_IOPORT); //Save (only) the communications port settings to flash and BBR
     myGNSS.setAutoPVT(true); //Automatically updates PVT
-    myGNSS.setNavigationFrequency(10); // doesn't actually send at 10 times per second but it will send as fast as it can (about 7-8 times per second)
     flash(500);
 
     //conneting to radio
@@ -211,14 +210,14 @@ void loop() {
 
 //Function to read the button input
 void buttonInput() {
-  if (!digitalRead(data_log_button)) { //if the data log button is pressed, either start data logging or dump the data to the SD by setting the appropriate flag
+  if (digitalRead(data_log_button)) { //if the data log button is pressed, either start data logging or dump the data to the SD by setting the appropriate flag
     if (!(data_log) && !(dump_to_SD_card)) {
       data_log = 1;
     } else {
       dump_to_SD_card = 1;
       data_log = 0;
     }
-    while(!digitalRead(data_log_button)); //wait for button to be released
+    while(digitalRead(data_log_button)); //wait for button to be released
     delay(500); //Just in case the button vibrates and gets pressed multiple times
   }
   
