@@ -1,5 +1,5 @@
 /*
-Objective: Receive GPS and Sensor data from a Lora SX1280 radio (DLP-RFS1280)
+Objective: Receive GPS and Sensor data from a Lora SX1280 radio (DLP-RFS1280) and print it as a CSV to the serial port
 
 Libraries: Radio (http://github.com/StuartsProjects/SX12XX-LoRa)
 
