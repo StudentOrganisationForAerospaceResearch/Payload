@@ -52,6 +52,8 @@
 #include <Adafruit_MPU6050.h> //libraries needed for the 2nd IMU (MPU6050)
 #include <SparkFun_FS3000_Arduino_Library.h> //libraries needed for the velocity sensor (FS3000)
 #include <DFRobot_LWLP.h> //libraries needed for the differential pressure sensor (DF Robot SEN0343)
+#include <esp_now.h>  //ESP_now 
+#include <WiFi.h>     //ESP_now
 
 //Slave ESP32 Set up\\-------------------------------------------------------------------------------
 #define I2C_ESP32_ADDR 0x11 //0x11 is the defined slave address for the ESP32 slave, can be changed
@@ -92,6 +94,11 @@ uint8_t start_buff[] = "a"; //low memory transmit mode makes the smallest buffer
 //BME set up\\-------------------------------------------------------------------------------
 #define SEALEVELPRESSURE_HPA (1013.25)
 uint32_t time_BME_data_is_ready = 0;
+
+//ESP_now setup\\----------------------------------------------------------------------------------------
+String success;// ESP_now sucessful transmission 
+esp_now_peer_info_t peerInfo;
+uint8_t broadcastAddress[] = {0x7c, 0xdF, 0xa1, 0xe2, 0x1e, 0x34};    // addresss of the recieving esp (the avionics master) not sure if the avionics address is right
 
 void setup() 
 {
@@ -189,8 +196,39 @@ void setup()
     flash(500);
     digitalWrite(led_pin, HIGH); //Turns on LED if all connections are working!
     Serial.println("All Sensors Initialized ");
+
+    /* ESP_now*/
+      
+    // Set device as a Wi-Fi Station
+    WiFi.mode(WIFI_STA);
+  
+    // Init ESP-NOW
+    if (esp_now_init() != ESP_OK) {
+      Serial.println("Error initializing ESP-NOW");
+      return;
+    }
+  
+    // Once ESPNow is successfully Init, we will register for Send CB to
+    // get the status of Trasnmitted packet
+    esp_now_register_send_cb(OnDataSent);
+    
+    // Register peer
+    memcpy(peerInfo.peer_addr, broadcastAddress, 6);
+    peerInfo.channel = 0;  
+    peerInfo.encrypt = false;
+    
+    // Add peer        
+    if (esp_now_add_peer(&peerInfo) != ESP_OK){
+      Serial.println("Failed to add peer");
+      return;
+    }
 }
 
+/* ESP now sending set up */
+void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
+  Serial.print("\r\nLast Packet Send Status:\t");
+  Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Delivery Success" : "Delivery Fail");
+}
 
 void loop() {
         buttonInput();
@@ -206,6 +244,7 @@ void loop() {
           dataLog();
         }
 }
+
 
 
 //Function to read the button input
@@ -356,6 +395,8 @@ void dataLog() {
   else {
     Serial.println(F("Transmission failed"));
   } 
+  /*ESP_Now */
+  esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *) &sensor_data, 120);
 }
 
 //Function to flash LED 
