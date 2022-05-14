@@ -19,6 +19,7 @@ Additional wireless communication is done through a WiFi mesh with the avionics 
 #### Instructions on use of the Ground Systems
 
 Before use of the ground systems software, ensure you have the latest version of [Java](https://www.java.com/en/) installed.
+Ensure that the Software location is within your documents or downloads folder as a cache file is created which is required to export a final CSV Log.
 
 Plug in the Ground Systems Board to an available COM port and `connect` to the microcontroller being used from within the software.
 Load the Ground systems layout txt file, this file can be edited to change the colours as well as the information.
