@@ -1,0 +1,12 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [Battery Module.PrjPcb]
+   Generated File[Battery Board PCB.TXT]
+   Generated File[Battery Board PCB.LDP]
+   Generated File[Battery Board PCB.DRR]
+
+
+Files Generated   : 3
+Documents Printed : 0
+
+Finished Output Generation At 1:02:18 PM On 2022-05-16
