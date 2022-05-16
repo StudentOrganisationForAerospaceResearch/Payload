@@ -1,0 +1,10 @@
+Board Information Report
+Filename     : C:\Users\Nasih Nazeem\Documents\GitHub\Payload\Model Tsukuyomi\Main Board\Main Board.PcbDoc
+Date         : 2022-05-16
+Time         : 12:57:21 PM
+Time Elapsed : 00:00:00
+
+General
+    Board Size, 3554milsx3676mils
+    Components on board, 50
+count : 2
