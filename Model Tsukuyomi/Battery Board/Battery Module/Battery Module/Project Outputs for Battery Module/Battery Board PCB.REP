@@ -2,39 +2,8 @@
 FileName = Battery Board PCB.GBR
 AutoAperture = True
 *************************************************************
-Generating : Top Pad Master
-      File : Battery Board PCB.GPT
-
-    Adding Layer      : Top Layer
-
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
-    D15
-    D16
-    D17
-    D18
-    D19
-    D20
-    D21
-    D22
-    D23
-    D24
-    D25
-    D26
-    D27
-    D28
-    D45
-    D46
-    D47
-    D48
-    D49
-*************************************************************
-
-*************************************************************
-Generating : Bottom Layer
-      File : Battery Board PCB.GBL
+Generating : Bottom Pad Master
+      File : Battery Board PCB.GPB
 
     Adding Layer      : Bottom Layer
 
@@ -42,46 +11,11 @@ Generating : Bottom Layer
 
 
 Used DCodes :
-    D14
     D45
     D46
     D47
     D48
     D49
-    D50
-*************************************************************
-
-*************************************************************
-Generating : Top Layer
-      File : Battery Board PCB.GTL
-
-    Adding Layer      : Top Layer
-
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
-    D14
-    D15
-    D16
-    D17
-    D18
-    D19
-    D20
-    D21
-    D22
-    D23
-    D24
-    D25
-    D26
-    D27
-    D28
-    D45
-    D46
-    D47
-    D48
-    D49
-    D50
 *************************************************************
 
 *************************************************************
@@ -100,31 +34,33 @@ Used DCodes :
 *************************************************************
 
 *************************************************************
-Generating : Top Paste
-      File : Battery Board PCB.GTP
+Generating : Mechanical 1
+      File : Battery Board PCB.GM1
 
-    Adding Layer      : Top Paste
-
-    Adding Layer      : Top Layer
-
-    Adding Layer      : Multi-Layer
+    Adding Layer      : Mechanical 1
 
 
 Used DCodes :
-    D15
-    D16
-    D17
-    D18
-    D19
-    D20
-    D21
-    D22
-    D23
-    D24
-    D25
-    D26
-    D27
-    D28
+*************************************************************
+
+*************************************************************
+Generating : Keep-Out Layer
+      File : Battery Board PCB.GKO
+
+    Adding Layer      : Keep-Out Layer
+
+
+Used DCodes :
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 5
+      File : Battery Board PCB.GM5
+
+    Adding Layer      : Mechanical 5
+
+
+Used DCodes :
 *************************************************************
 
 *************************************************************
@@ -162,8 +98,53 @@ Used DCodes :
 *************************************************************
 
 *************************************************************
-Generating : Bottom Pad Master
-      File : Battery Board PCB.GPB
+Generating : Bottom Overlay
+      File : Battery Board PCB.GBO
+
+    Adding Layer      : Bottom Overlay
+
+
+Used DCodes :
+    D10
+    D14
+*************************************************************
+
+*************************************************************
+Generating : Top Layer
+      File : Battery Board PCB.GTL
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D14
+    D15
+    D16
+    D17
+    D18
+    D19
+    D20
+    D21
+    D22
+    D23
+    D24
+    D25
+    D26
+    D27
+    D28
+    D45
+    D46
+    D47
+    D48
+    D49
+    D50
+*************************************************************
+
+*************************************************************
+Generating : Bottom Layer
+      File : Battery Board PCB.GBL
 
     Adding Layer      : Bottom Layer
 
@@ -171,11 +152,114 @@ Generating : Bottom Pad Master
 
 
 Used DCodes :
+    D14
     D45
     D46
     D47
     D48
     D49
+    D50
+    D51
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 13
+      File : Battery Board PCB.GM13
+
+    Adding Layer      : Mechanical 13
+
+
+Used DCodes :
+    D10
+    D11
+    D13
+    D52
+*************************************************************
+
+*************************************************************
+Generating : Top Paste
+      File : Battery Board PCB.GTP
+
+    Adding Layer      : Top Paste
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D15
+    D16
+    D17
+    D18
+    D19
+    D20
+    D21
+    D22
+    D23
+    D24
+    D25
+    D26
+    D27
+    D28
+*************************************************************
+
+*************************************************************
+Generating : Top Pad Master
+      File : Battery Board PCB.GPT
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D15
+    D16
+    D17
+    D18
+    D19
+    D20
+    D21
+    D22
+    D23
+    D24
+    D25
+    D26
+    D27
+    D28
+    D45
+    D46
+    D47
+    D48
+    D49
+*************************************************************
+
+*************************************************************
+Generating : Bottom Paste
+      File : Battery Board PCB.GBP
+
+    Adding Layer      : Bottom Paste
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 15
+      File : Battery Board PCB.GM15
+
+    Adding Layer      : Mechanical 15
+
+
+Used DCodes :
+    D11
+    D12
+    D53
 *************************************************************
 
 *************************************************************
@@ -196,64 +280,5 @@ Used DCodes :
     D42
     D43
     D44
-*************************************************************
-
-*************************************************************
-Generating : Bottom Overlay
-      File : Battery Board PCB.GBO
-
-    Adding Layer      : Bottom Overlay
-
-
-Used DCodes :
-    D10
-    D14
-*************************************************************
-
-*************************************************************
-Generating : Mechanical 13
-      File : Battery Board PCB.GM13
-
-    Adding Layer      : Mechanical 13
-
-
-Used DCodes :
-    D10
-    D11
-    D13
-    D51
-*************************************************************
-
-*************************************************************
-Generating : Mechanical 15
-      File : Battery Board PCB.GM15
-
-    Adding Layer      : Mechanical 15
-
-
-Used DCodes :
-    D11
-    D12
-    D52
-*************************************************************
-
-*************************************************************
-Generating : Mechanical 1
-      File : Battery Board PCB.GM1
-
-    Adding Layer      : Mechanical 1
-
-
-Used DCodes :
-*************************************************************
-
-*************************************************************
-Generating : Mechanical 5
-      File : Battery Board PCB.GM5
-
-    Adding Layer      : Mechanical 5
-
-
-Used DCodes :
 *************************************************************
 

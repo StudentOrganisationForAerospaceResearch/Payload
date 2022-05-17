@@ -39,5 +39,6 @@ D47   ROUNDED           188.976     188.976       0.000 FLASH       0.000
 D48   ROUNDED            59.055      59.055       0.000 FLASH       0.000
 D49   RECTANGULAR        59.055      59.055       0.000 FLASH     270.000
 D50   ROUNDED            50.000      50.000       0.000 FLASH       0.000
-D51   ROUNDED             1.000       1.000       0.000  LINE       0.000
-D52   ROUNDED             1.968       1.968       0.000  LINE       0.000
+D51   ROUNDED            20.000      20.000       0.000  LINE       0.000
+D52   ROUNDED             1.000       1.000       0.000  LINE       0.000
+D53   ROUNDED             1.968       1.968       0.000  LINE       0.000
