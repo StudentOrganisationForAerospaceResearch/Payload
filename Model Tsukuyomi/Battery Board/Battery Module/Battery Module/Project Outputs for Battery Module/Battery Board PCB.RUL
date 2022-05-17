@@ -1,4 +1,4 @@
-DRC Rules Export File for PCB: C:\Users\Nasih Nazeem\Documents\GitHub\Payload\Model Tsukuyomi\Battery Board\Battery Module\Battery Module\Battery Board PCB.PcbDoc
+DRC Rules Export File for PCB: H:\Github\NasihNazeem\Payload\Model Tsukuyomi\Battery Board\Battery Module\Battery Module\Battery Board PCB.PcbDoc
 RuleKind=Clearance|RuleName=Clearance|Scope=Board|Minimum=6.00
 RuleKind=SolderMaskExpansion|RuleName=SolderMaskExpansion|Scope=Board|Minimum=4.00
 RuleKind=Width|RuleName=Width|Scope=Board|Minimum=10.00

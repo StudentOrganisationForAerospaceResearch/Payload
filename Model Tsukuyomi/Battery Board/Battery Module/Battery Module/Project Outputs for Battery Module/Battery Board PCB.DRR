@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------------------------------------------------------------
-NCDrill File Report For: Battery Board PCB.PcbDoc   2022-05-16  4:01:34 PM
+NCDrill File Report For: Battery Board PCB.PcbDoc   2022-05-16  10:17:12 PM
 ----------------------------------------------------------------------------------------------------------------------------------
 
 Layer Pair : Top Layer to Bottom Layer
@@ -7,11 +7,11 @@ ASCII RoundHoles File : Battery Board PCB.TXT
 
 Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
 ----------------------------------------------------------------------------------------------------------------------------------
-T1      28mil (0.711mm)                                           Round             23        PTH        9.80inch (248.80mm)
-T2      35mil (0.899mm)                                           Round             2         PTH        0.10inch (2.54mm)
-T3      83mil (2.101mm)                                           Round             5         PTH        1.08inch (27.36mm)
+T1      28mil (0.711mm)                                           Round             24        PTH        10.29inch (261.49mm)
+T2      35mil (0.9mm)                                             Round             2         PTH        0.10inch (2.54mm)
+T3      83mil (2.1mm)                                             Round             5         PTH        1.08inch (27.36mm)
 T4      126mil (3.2mm)                                            Round             8         PTH        8.94inch (227.02mm)
 ----------------------------------------------------------------------------------------------------------------------------------
-Totals                                                                              38
+Totals                                                                              39
 
 Total Processing Time (hh:mm:ss) : 00:00:00
