@@ -1,0 +1,177 @@
+//Payload Model Ouroboros / Osprey Level too
+//Objective: Transmitting and storing sensor data
+
+// Sensors:
+// ISM330DHCX (IMU1)
+// BME680 (Barometer/humidity/temperature/gas)
+// ZOE-M8Q (GPS)
+// MPU6050 (IMU2)
+// BMM150 (Magnometer)
+// TMP117 (High accuracy temperature)
+// FS3000 (Velocity)
+// LWLP5000 (Differential pressure)
+
+// Radio:
+// DLP-RFS1280 (Lora SX1280 radios)
+
+// Libraries:
+// Radio: github.com/StuartsProjects/SX12XX-LoRa
+// ISM330DHCX (IMU1): search for Adafruit_LSM6DS library in Arduino library manager.
+// BME680 (Barometer/humidity/temperature/gas): search for Adafruit_BME680 in Arduino library manager.
+// ZOE-M8Q (GPS): search for Sparkfun u-blox GNSS Arduino Library in Arduino library manager.
+// MPU6050 (IMU2): search for Adafruit MPU6050 in Arduino library manager.
+// BMM150 (Magnometer): search for DFRobot_BMM150 in Arduino library manager.
+// TMP117 (Temperature): search for Adafruit TMP117 in Arduino library manager.
+// FS3000 (Velocity): search for Sparkfun_FS3000_Arduino_Library in Arduino library manager.
+// LWLP5000 (Differential pressure): search for DFRobot_LWLP in Arduino library manager.
+
+// Changing Transmission settings
+// 1. using the settings.h file, radio transmission elements such as bandwidth, coding rate and spreading factor can be manipulated to change
+//    signal range and packet transmission speed. Accpeted values for these parameters can be found here: github.com/StuartsProjects/SX12XX-LoRa/blob/master/src/SX128XLT_Definitions.h
+//    For more information on the effects of each of these settings: medium.com/home-wireless/testing-lora-radios-with-the-limesdr-mini-part-2-37fa481217ff
+// 2. Changing the delay in the settings file does not work. Instead, change the delay at the bottom of the main code that breaks up the transmissions. This value cannot be set to least than 10ms. Ensure that the settings in step 1 allow for the transmission speed you coded for.
+
+
+// Adding additional sensors
+// 1. Install libraries and set up device
+// 2. Define variables that need to be sent
+// 3. Assign values to these variables
+// 4. Send values by adding them to the buffer (Using LT.writeFloat or LT.writeUint8)
+
+//libraries\\---------------------------------------------------------------------------------------------------
+#include <SPI.h> //used for radio, GPS, MicroSD, GPS and flash
+#include <Wire.h> //used for i2c sensors 
+#include <SparkFun_u-blox_GNSS_Arduino_Library.h> //library needed for GPS(GNSS ZOE-Click)
+#include <SX128XLT.h>  //libraries needed for radio (DLP-RFS1280)
+#include "Settings_ESP.h" //libraries needed for frequencies, LoRa settings etc for ESP32
+#include <esp_now.h>  //ESP_now 
+#include <AceCRC.h>
+#include <WiFi.h>     //ESP_now
+
+//Slave ESP32 Set up\\-------------------------------------------------------------------------------
+#define I2C_ESP32_ADDR 0x11 //0x11 is the defined slave address for the ESP32 slave, can be changed
+int dump_to_SD_card = 0; //flag to send the command to dump the flash data to the SD card
+int data_log = 0; //flag to start logging data
+int erase_flash_chip = 0;
+union float_and_char { //stores a float and char array in the same memory location, used to send 32-bit float values as 4 8-bit char values over I2C
+  float flt; // 4 bytes
+  char c[4]; // 1 byte * 4
+};
+float_and_char sensor_data[4]; //array that stores all of our sensor data before sending
+
+//SPI Set up\\---------------------------------------------------------------------------------------
+SPIClass SPI2(HSPI); //setting up HSPI to work on ESP32 in conjuction with VSPI
+
+//Pin Set up\\---------------------------------------------------------------------------------------------------
+//most Pins are already defined in the library
+uint8_t cs_pin = 15; //GPIO pin 15 has been selected for chip select the GPS
+
+//Defining Library functions to be called\\---------------------------------------------------------------------------------------------------
+SFE_UBLOX_GNSS myGNSS; //Create the library class instance called myGNSS
+SX128XLT LT; //Create the library class instance called LT for radio
+//Needed for radio to work\\---------------------------------------------------------------------------------------------------
+uint8_t TXPacketL; //successful transmission
+uint8_t start_buff[] = "a"; //low memory transmit mode makes the smallest buffer*/
+
+//BME set up\\-------------------------------------------------------------------------------
+
+
+//ESP_now setup\\----------------------------------------------------------------------------------------
+String success;// ESP_now sucessful transmission
+esp_now_peer_info_t peerInfo;
+uint8_t broadcastAddress[] = {0x7c, 0xdf, 0xa1, 0xe2, 0x1e, 0x34};    // addresss of the recieving esp (the avionics master) not sure if the avionics address is right
+
+void setup()
+{
+  Serial.begin(115200);
+  Wire.begin(); //For i2c
+  SPI.begin(); //For VSPI (Used for Radio)
+  SPI2.begin(); //FOR HSPI (Used for GPS)
+
+  //connecting to GPS
+  while (myGNSS.begin(SPI2, cs_pin, 5000000) == false)  {
+    Serial.println("Failed to communicate with GPS.");
+  }
+  myGNSS.setPortOutput(COM_PORT_SPI, COM_TYPE_UBX); //Set the SPI port to output UBX only (turn off NMEA noise)
+  myGNSS.saveConfigSelective(VAL_CFG_SUBSEC_IOPORT); //Save (only) the communications port settings to flash and BBR
+  myGNSS.setAutoPVT(true); //Automatically updates PVT
+  myGNSS.setNavigationFrequency(10);
+
+  //conneting to radio
+  while (!LT.begin(NSS, NRESET, RFBUSY, DIO1, DIO2, DIO3, RX_EN, TX_EN, LORA_DEVICE))  {
+    Serial.println("Failed to communicate with Radio.");
+  }
+
+  LT.setupLoRa(Frequency, Offset, SpreadingFactor, Bandwidth, CodeRate); //sets up necessary settings for the radio
+  Serial.println("All Sensors Initialized ");
+
+  /* ESP_now*/
+
+  // Set device as a Wi-Fi Station
+  WiFi.mode(WIFI_STA);
+
+  // Init ESP-NOW
+  if (esp_now_init() != ESP_OK) {
+    Serial.println("Error initializing ESP-NOW");
+    return;
+  }
+
+  // Once ESPNow is successfully Init, we will register for Send CB to
+  // get the status of Trasnmitted packet
+  esp_now_register_send_cb(OnDataSent);
+
+  // Register peer
+  memcpy(peerInfo.peer_addr, broadcastAddress, 6);
+  peerInfo.channel = 1;
+  peerInfo.encrypt = false;
+
+  // Add peer
+  if (esp_now_add_peer(&peerInfo) != ESP_OK) {
+    Serial.println("Failed to add peer");
+    return;
+  }
+}
+
+/* ESP now sending set up */
+void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
+  Serial.print("\r\nLast Packet Send Status:\t");
+  Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Delivery Success" : "Delivery Fail");
+}
+
+
+//Function to read the button input
+
+//Function to collect sensor data and send it to the slave ESP32 to write to the flash chip
+void loop() {
+  //Serial.println("");
+  /* TIME DATA */
+  sensor_data[0].flt = (float) millis() / 1000.0; //convert ms to s
+  /* END OF TIME DATA */
+
+  /* GPS DATA */ //Serial.printf("GPS starts: %d, ", millis());
+  sensor_data[1].flt = (float) myGNSS.getLatitude() / 10000000.0;
+  sensor_data[2].flt = (float) myGNSS.getLongitude() / 10000000.0;
+  sensor_data[3].flt = (float) myGNSS.getAltitude() / 10000000.0;
+  /* END OF GPS DATA */ //Serial.printf("GPS ends: %d\n", millis());
+
+
+  Serial.flush();                           // waits until the transmission is finished
+  uint8_t len;                              // length of packet sent
+  LT.startWriteSXBuffer(0);                 //start the write packet to buffer process
+  LT.writeBuffer(start_buff, sizeof(start_buff));
+
+  for (int i = 0; i < 4; i++) {
+    LT.writeFloat(sensor_data[i].flt);
+  }
+
+  len = LT.endWriteSXBuffer();
+  if (TXPacketL = LT.transmitSXBuffer(0, len, 10000, TXpower, 0)) {  // The transmitting magic, a little underwhelming. will return packet length sent if OK, otherwise 0 if transmit error
+    Serial.println(len);
+  }
+  else {
+    Serial.println(F("Transmission failed"));
+  }
+  /*ESP_Now */
+  esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *) &sensor_data, 16);
+  delay(1000);
+}
