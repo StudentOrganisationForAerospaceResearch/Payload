@@ -205,8 +205,10 @@ void setup()
     // Init ESP-NOW
     if (esp_now_init() != ESP_OK) {
       Serial.println("Error initializing ESP-NOW");
+      flash(50);
       return;
     }
+    flash(500);
   
     // Once ESPNow is successfully Init, we will register for Send CB to
     // get the status of Trasnmitted packet
@@ -220,8 +222,10 @@ void setup()
     // Add peer        
     if (esp_now_add_peer(&peerInfo) != ESP_OK){
       Serial.println("Failed to add peer");
+      flash(50);
       return;
     }
+    flash(500);
 }
 
 /* ESP now sending set up */
