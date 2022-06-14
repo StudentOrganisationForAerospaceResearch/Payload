@@ -18,10 +18,10 @@
 
  
 #define NRESET 27                               //reset pin on LoRa device
-#define RFBUSY 25                               //busy line for LoRa device
+#define RFBUSY 26                               //busy line for LoRa device
 
 #define LED1 -1                                  
-#define DIO1 35                                 //DIO1 pin on LoRa device, used for RX and TX done 
+#define DIO1 25                                 //DIO1 pin on LoRa device, used for RX and TX done 
 #define DIO2 -1                                 //DIO2 pin on LoRa device, normally not used so set to -1 
 #define DIO3 -1                                 //DIO3 pin on LoRa device, normally not used so set to -1
 #define RX_EN -1                                //pin for RX enable, used on some SX128X devices, set to -1 if not used
