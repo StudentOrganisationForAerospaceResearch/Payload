@@ -120,8 +120,8 @@ typedef struct {
   //IMU_6DOF_t MPU6050_data;
   TMP75_t TMP75_data;
   FS3000_t FS3000_data;
-  //LWLP5000_t LWLP5000_data;
-  //ZOE_M8Q_t ZOE_M8Q_data;
+  LWLP5000_t LWLP5000_data;
+  ZOE_M8Q_t ZOE_M8Q_data;
   MS5611_t MS5611_data;
 } __attribute__((packed)) PayloadData;
 
@@ -221,22 +221,22 @@ void setup()
    // MPU6050_sensor.setFilterBandwidth(MPU6050_BAND_21_HZ);
 
     //connecting to FS3000
-    /*
+    
     while (!FS3000_sensor.begin()) {
       Serial.println("Failed to communicate with FS3000");
       flash(50);
     }
-    flash(500); */
+    flash(500);
 
     //connecting to differential pressure sensor
-    /*while (LWLP5000_sensor.begin() != 0) {
+    while (LWLP5000_sensor.begin() != 0) {
       Serial.println("Failed to communicate with differential pressure sensor/");
       flash(50);
     }
-    flash(500);*/
+    flash(500);
 
     //connecting to GPS
-    /*while (ZOE_M8Q_sensor.begin(SPI2, cs_pin, 5500000) == false)  {
+    while (ZOE_M8Q_sensor.begin(SPI2, cs_pin, 5500000) == false)  {
         Serial.println("Failed to communicate with GPS.");
         flash(50);
     }
@@ -244,7 +244,7 @@ void setup()
     ZOE_M8Q_sensor.saveConfigSelective(VAL_CFG_SUBSEC_IOPORT); //Save (only) the communications port settings to flash and BBR
     ZOE_M8Q_sensor.setAutoPVT(true); //Automatically updates PVT
     flash(500);
-*/
+    
     //connecting to MS5611
     while (!MS5611_sensor.begin()) {
       Serial.println("MS5611 failed to communicate.");
@@ -405,12 +405,15 @@ void dataLog() {
   payload_data->ZOE_M8Q_data.altitude = (float) ZOE_M8Q_sensor.getAltitude() / 10000000.0;
   payload_data->ZOE_M8Q_data.satellites_in_view = (float) ZOE_M8Q_sensor.getSIV();
   /* END OF GPS DATA */ //Serial.printf("GPS ends: %d\n", millis());
+  sensor_data[10] = (float) ZOE_M8Q_sensor.getLatitude() / 10000000.0;
+  sensor_data[11] = (float) ZOE_M8Q_sensor.getLongitude() / 10000000.0;
+  sensor_data[12] = (float) ZOE_M8Q_sensor.getAltitude() / 10000000.0;
 
 
   /* MS5611 DATA */
   MS5611_sensor.read();
-  sensor_data[10].flt = (float) MS5611_sensor.getTemperature();
-  sensor_data[11].flt = (float) MS5611_sensor.getPressure();
+  sensor_data[13].flt = (float) MS5611_sensor.getTemperature();
+  sensor_data[14].flt = (float) MS5611_sensor.getPressure();
   /*END OF MS5611 DATA */
 
 
@@ -433,7 +436,7 @@ void dataLog() {
   LT.startWriteSXBuffer(0);                 //start the write packet to buffer process
   LT.writeBuffer(start_buff, sizeof(start_buff));
 
-  for (size_t i = 0; i < sizeof(PayloadData) / 4; i++) {
+  for (size_t i = 0; i < 14; i++) {
     LT.writeFloat(sensor_data[i].flt);
     Serial.println(i);
   }
