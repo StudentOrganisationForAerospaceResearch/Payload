@@ -1,0 +1,152 @@
+/*
+Objective: Receive GPS and Sensor data from a Lora SX1280 radio (DLP-RFS1280)
+
+Libraries: Radio (http://github.com/StuartsProjects/SX12XX-LoRa)
+
+Receive instructions
+
+  1. define variable
+  2. read the incoming buffer in the order that the variables are being sent from the transmitter
+
+Sumair Shergill - April 29
+ */
+
+//Libraries\\-------------------------------------------
+#include <SPI.h>    //Radio uses SPI
+#include <SX128XLT.h> //libraries needed for radio (DLP-RFS1280)
+#include "Settings.h" //libraries needed for frequencies, LoRa settings etc for Ardunio
+
+//LoRa\\-------------------------------------------------------
+SX128XLT LT;    //Create the library class instance called LT
+uint8_t RXPacketL;    // receive fuction return assigned to this. 1 if sucessful transmission and 0 if unsucessful
+int16_t Packet_RSSI;    // strength of signal
+int16_t PacketSNR;      // Signal to noise ratio
+
+uint8_t len;                // length of received packet. Needed for recieve
+
+
+typedef struct {
+  float acceleration_x;
+  float acceleration_y;
+  float acceleration_z;
+  float gyro_x;
+  float gyro_y;
+  float gyro_z;
+  float temperature;
+} __attribute__((packed)) IMU_6DOF_t;
+
+
+typedef struct {
+  float temperature;
+  float humidity;
+  float pressure;
+  float gas_resistance;
+} BME680_t;
+
+typedef struct {
+  float temperature;
+} __attribute__((packed)) TMP75_t;
+
+typedef struct {
+  float air_velocity;
+} __attribute__((packed)) FS3000_t;
+
+typedef struct {
+  float differential_pressure;
+  float temperature;
+} __attribute__((packed)) LWLP5000_t;
+
+typedef struct {
+  float latitude;
+  float longitude;
+  float altitude;
+  float satellites_in_view;
+} __attribute__((packed)) ZOE_M8Q_t;
+
+typedef struct {
+  float pressure;
+  float temperature;
+} __attribute__((packed)) MS5611_t;
+/*
+typedef struct {
+  float geomagnetic_x;
+  float geomagnetic_y;
+  float geomagnetic_z;
+} __attribute__((packed)) BMM150_t;
+*/
+typedef struct {
+  float temperature;
+  float humidity;
+  float CO2_concentration;
+} __attribute__((packed)) SCD30_t;
+
+typedef struct {
+  float time_stamp; // 4 bytes
+  IMU_6DOF_t ISM330DHCX_data; // 28 bytes
+  //IMU_6DOF_t MPU6050_data;
+  BME680_t BME680_data; // 16 bytes
+  MS5611_t MS5611_data; // 8 bytes
+  ZOE_M8Q_t ZOE_M8Q_data; // 16 bytes
+  //BMM150_t BMM150_data;
+  TMP75_t TMP75_data; // 4 bytes
+  FS3000_t FS3000_data; // 4 bytes
+  LWLP5000_t LWLP5000_data; // 8 bytes
+  SCD30_t SCD30_data; // 12 bytes
+} __attribute__((packed)) PayloadData;
+
+char receivebuffer[1];      // the transmitted buffer has 1 byte in front that is not sensor data
+
+
+
+
+void setup()
+{
+
+  Serial.begin(112500);
+  SPI.begin();
+
+  if (LT.begin(NSS, NRESET, RFBUSY, DIO1, DIO2, DIO3, RX_EN, TX_EN, LORA_DEVICE)) // Checking if pins are correctly connected
+  {
+    Serial.println(F("LoRa OK"));
+  }
+  else
+  {
+    Serial.println(F("Device error"));
+  }
+
+  LT.setupLoRa(Frequency, Offset, SpreadingFactor, Bandwidth, CodeRate);  //Setup radio based on settings specified on Settings.h
+  Serial.println(F("Receiver ready"));
+  Serial.println();
+  delay(1000);
+}
+
+void loop(){
+  float recieved[sizeof(PayloadData)/4];
+  
+  RXPacketL = LT.receiveSXBuffer(0,0, WAIT_RX);  // Packet received
+  Packet_RSSI = LT.readPacketRSSI();      // read signal stregth
+  PacketSNR = LT.readPacketSNR();         // read signal to noise ratio
+  
+  LT.startReadSXBuffer(0);               //start buffer read at location 0
+  LT.readBufferChar(receivebuffer);      //The first bite transmitted is a single character buffer
+
+  //READ DATA\\----------------------------------------------------------------------
+  for(size_t i = 0; i<sizeof(PayloadData)/4; i++){
+    recieved[i] = LT.readFloat();
+  }
+  
+  len = LT.endReadSXBuffer();   // end reading 
+
+  //Print Data\\-----------------------------------------------------------------------------------------------
+  for(size_t i = 0; i<sizeof(PayloadData)/4; i++){
+    Serial.print(recieved[i]);
+    Serial.print(",");  
+  } 
+  Serial.print(Packet_RSSI);
+  Serial.print(","); 
+  Serial.print(PacketSNR); 
+  Serial.print(","); 
+  Serial.println();
+  delay(100);    // delay between reading only ends up printing at 10 times a second despite being set for 20
+  
+}
